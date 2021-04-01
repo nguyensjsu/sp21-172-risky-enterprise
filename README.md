@@ -3,8 +3,21 @@
 
 
 
-
-
+1. Cashier's App
+   - What features were implemented?
+2. Backoffice Help Desk App
+   - What features were implemented?
+3. Online Store
+   - What features were implemented?
+4. REST API 
+   - Final design with sample request/response
+5. Integrations
+   - Which integrations were selected?
+6. Cloud Deployments
+   - Design Notes on GitHub an Architecture Diagram of the overall Deployment.
+   - How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?
+7. Technical Requirements
+   - Discussion with screenshot evidence of how each technical requirement is meet.
 
 
 
