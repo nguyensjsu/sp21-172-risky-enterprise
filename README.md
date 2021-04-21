@@ -26,7 +26,7 @@
 
    * MicroService Architecture
 
-   ![1](images/MicroServiceArchitecure.pdf)
+   ![1](images/MicroServiceArchitecture.png)
 
 
 
@@ -46,7 +46,6 @@
 
 ## Individual Jounral
 1. Week #1
-   
    1. Chahatpreet
       * Challenges
          * Designing the micro-serice architecture and deciding the interaction between microservices
