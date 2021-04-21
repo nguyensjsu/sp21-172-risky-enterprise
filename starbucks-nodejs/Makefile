@@ -27,8 +27,8 @@ docker-run:
 	docker run --network risky --name starbucks-nodejs -p 8080:8080  -e "api_endpoint=http://starbucks-api:3000" -td nodejs
 
 docker-setup:
-	docker network create --driver bridge risky
+	docker network create --driver bridge starbucks
 
 docker-launch:
-	docker run --network risky --name starbucks-nodejs -p 8080:8080 
-	-e "api_endpoint=http://starbucks-api:3000" -td nodejs
+	docker run --network starbucks --name starbucks-nodejs -p 8080:8080 
+	-e "api_endpoint=http://starbucks-api:3000" -td paulnguyen/starbucks-nodejs:v1.0

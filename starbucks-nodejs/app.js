@@ -229,6 +229,7 @@ var handle_post = function (req, res, next) {
                     " State: " + req.body.state + 
                     " Store: " + req.body.stores + "\n" ) ;
     register_id = req.body.stores ;
+    orderDrink = req.body.orderDrink;
     var hash1 = "" + req.body.hash ;
     var state = "" + req.body.state ;
     var action = "" + req.body.event ;
@@ -239,6 +240,7 @@ var handle_post = function (req, res, next) {
     console.log( "DIFF:  " +  diff ) ;
     console.log( "HASH1: " + hash1 ) ;
     console.log( "HASH2: " + hash2 ) ;
+    console.log( "DRINK:" + orderDrink);
 
     if ( diff > 900 || hash1 != hash2 ) {
         error( req, res, "*** SESSION INVALID ***", ts ) ;
@@ -266,6 +268,7 @@ var handle_post = function (req, res, next) {
     } else {
         error(req, res, "Invalid Request.", ts ) ;
     }
+    
 
 }
 

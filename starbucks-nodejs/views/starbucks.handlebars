@@ -34,9 +34,33 @@
     }
 </script>
 
+<script type="text/javascript">
+    function selectedDrink() {
+        reg = document.getElementById("orderDrink").value
+        switch(reg) {
+          case "Caffe Latte":
+            document.getElementById("orderDrink").options[0].selected=true
+            break;
+          case "Caffe Americano":
+            document.getElementById("orderDrink").options[1].selected=true
+            break;
+          case "Caffe Mocha":
+            document.getElementById("orderDrink").options[2].selected=true
+            break;
+          case "Espresso":
+            document.getElementById("orderDrink").options[3].selected=true
+            break;
+          case "Cappuccino":
+            document.getElementById("orderDrink").options[4].selected=true
+            break;
+        } 
+    }
+</script>
+
 </head>
 
 <body onload="selectedStore()">
+  <element onload="selectedDrink()"></element>
 <h1 align="center">Welcome to Starbucks Reserved</h1>
 
 <!-- FORM SECTION -->
@@ -71,14 +95,40 @@
 
     <br/>
 
-    <p align="center"><img src="/images/starbucks.jpg"></p>
-
-    <br/>
+    <p align="center">
+    <label for="order">Select Drink:</label>
+    <select name="order" id="orderDrink">   
+      <option value="latte">Caffe Latte</option>
+      <option value="americano">Caffe Americano</option>
+      <option value="mocha">Caffe Mocha</option>
+      <option value="espresso">Espresso</option>
+      <option value="cappuccino">Cappuccino</option>
+    </select> 
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="order">Select Milk:</label>
+    <select name="order" id="orderMilk">
+      <option value="whole">Whole Milk</option>
+      <option value="two">2% Milk</option>
+      <option value="nonfat">Nonfat Milk</option>
+      <option value="almond">Almond Milk</option>
+      <option value="soy">Soy Milk</option>
+    </select> 
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="order">Select Size:</label>
+    <select name="order" id="orderSize">
+      <option value="short">Short</option>
+      <option value="tall">Tall</option>
+      <option value="grande">Grande</option>
+      <option value="venti">Venti</option>
+      <option value="own">Your Own Cup</option>
+    </select> 
+    &nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="submit" name="event" id="btnPlaceOrder" value="Place Order">  
+    </p>
+    <br>
 
     <p align="center">
         <input type="submit" name="event" id="btnGetOrder" value="Get Order">
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="submit" name="event" id="btnPlaceOrder" value="Place Order">
         &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" name="event" id="btnClearOrder" value="Clear Order">
     </p>
