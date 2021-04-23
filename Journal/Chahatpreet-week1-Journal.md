@@ -1,6 +1,6 @@
 ## Team Project Boad
 
-![Card Image](../images/Chahatpreet-Week1Card.PNG)
+![Card Image](../images/Chahatpreet-Week1Card.png)
 
 ## Challenges
 1. Designing the micro-serice architecture and deciding the interaction between microservices
