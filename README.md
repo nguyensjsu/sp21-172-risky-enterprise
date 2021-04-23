@@ -61,17 +61,6 @@ __Week 3__ Plan: Test Payment processing microservice with relative frontend cou
 #
 __Week 4__ Plan: General testing<br/>
 
---- 
-&nbsp;
-
-## Individual Jounral
-1. Week #1
-   1. Chahatpreet
-      * Challenges
-         * Designing the micro-serice architecture and deciding the interaction between microservices
-      * Accomplishments
-         * Completed Order Processing Microservice.
-         Links: (write push Links here)
 
 
 
