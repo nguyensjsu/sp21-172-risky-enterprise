@@ -22,4 +22,4 @@ Week 1 Challenges:
 
 Team's Task Board:
 
-![Card Image](images/YingChang-Week1Card.PNG)
+![Card Image](../images/YingChang-Week1Card.PNG)
