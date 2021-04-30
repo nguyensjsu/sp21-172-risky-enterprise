@@ -1,5 +1,5 @@
 
-package com.example.springstarbucksapi;
+package com.example.OrderProcessing;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

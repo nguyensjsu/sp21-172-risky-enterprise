@@ -1,4 +1,4 @@
-package com.example.springstarbucksapi;
+package com.example.OrderProcessing;
 
 public class Message {
     private String msg;
@@ -13,7 +13,7 @@ public class Message {
         return this.msg;
     }
 
-    public void setMessage(){
+    public void setMessage(String  msg){
         this.msg = msg;
     }
 }

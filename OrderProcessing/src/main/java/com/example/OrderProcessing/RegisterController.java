@@ -1,4 +1,4 @@
-package com.example.springstarbucksapi;
+package com.example.OrderProcessing;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,7 +54,7 @@ public class RegisterController {
     @GetMapping("/ping")
     Message newMessage() {
         Message healthCheck = new Message();
-        healthCheck.setStatus("Starbucks API version 1.0 alive!");
+        healthCheck.setMessage("Starbucks API version 1.0 alive!");
         return healthCheck;
     }
 
@@ -79,9 +79,10 @@ public class RegisterController {
     }
 
     @PostMapping("/order/register/{regid}/pay/{cardnum}")
-    Card CardById(@PathVariable Long regid, @PathVariable String cardnum){
+    Message makePayment(@PathVariable Long regid, @PathVariable String cardnum){
 
-        // implement call to payment processing microservice
+        
+        return null;
     }
 
 
