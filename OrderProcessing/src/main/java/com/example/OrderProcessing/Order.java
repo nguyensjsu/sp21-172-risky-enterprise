@@ -22,17 +22,18 @@ public class Order {
     private Drink drink;
     private Milk milk;
     private CoffeeSize size;
-    private double total;
+    private double price;
     private OrderStatus status;
 
     public Order(){}
 
 
-    public Order(String drink, String milk, String size){
+    public Order(String drink, String milk, String size, double price){
         System.out.println(drink.toUpperCase());
         this.drink = Drink.valueOf(drink.toUpperCase());
         this.milk = Milk.valueOf(milk.toUpperCase());
         this.size = CoffeeSize.valueOf(size.toUpperCase());
+        this.price = price;
     }
 
     
