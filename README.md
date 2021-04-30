@@ -25,7 +25,8 @@
    Link for lucid Charts: https://lucid.app/lucidchart/invitations/accept/inv_4e8b2e76-cfb8-44df-b20a-448c435032e7?viewport_loc=76%2C145%2C1899%2C1068%2C0_0
 
    * MicroService Architecture
-   <details><summary>Diagram</summary><img src="images/MicroServiceArchitecture.png"></details>
+   <details><summary>Archtecure Design 1</summary><img src="images/MicroServiceArchitecture.png"></details>
+   <details><summary>Archtecure Design 2</summary><img src="images/MicroServiceArchitecture-2.png"></details>
 
 
 
