@@ -116,9 +116,10 @@ public class PaymentsController {
 
     @PostMapping("/reward/{customerId}/add/{amount}")
     @ResponseBody
-    public Message addRewards(@PathVariable Long customerId, @PathVariable int amount) throws ResourceNotFoundException{
+    public Message addRewards(@PathVariable Long customerId, @PathVariable double amount) throws ResourceNotFoundException{
         return customerRepository.findById(customerId).map(customer -> {
             customer.setRewards(customer.getRewards()+amount);
+            customerRepository.save(customer);
             return new Message("$"+customer.getRewards());
         }).orElseThrow(() -> new ResourceNotFoundException("Csutomer do not exist"));
     }
@@ -126,7 +127,7 @@ public class PaymentsController {
 
     @PostMapping("/pay/reward/{customerId}/amount/{amount}")
     @ResponseBody
-    public Message payWithRewards(@PathVariable Long customerId, @PathVariable int amount) throws ResourceNotFoundException{
+    public Message payWithRewards(@PathVariable Long customerId, @PathVariable double amount) throws ResourceNotFoundException{
         return customerRepository.findById(customerId).map(customer -> {
             if(customer.getRewards() < amount){
                 return new Message("INSUFFICIENT BALANCE");

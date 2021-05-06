@@ -38,7 +38,7 @@ public class Customer {
     private String zip;
     private String phoneNumber;
     private String email;
-    private int rewards;
+    private double rewards;
 
 
     @OneToMany(mappedBy="customer", fetch = FetchType.EAGER, orphanRemoval = true)
