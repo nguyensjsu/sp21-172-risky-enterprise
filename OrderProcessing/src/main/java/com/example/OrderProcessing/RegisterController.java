@@ -69,10 +69,10 @@ public class RegisterController {
 
     @GetMapping("/order/register/{regId}")
     List<Order> allActiveOrdersRegID(@PathVariable Long regId){
-        ArrayList<Long> ids = new ArrayList<>();
-        ids.add(regId);
+        // ArrayList<Long> ids = new ArrayList<>();
+        // ids.add(regId);
 
-        List<Order> orders = orderRepository.findAllById(ids);
+        List<Order> orders = orderRepository.findAllByRegId(regId);
         List<Order> activeOrders = orders.stream().filter(order -> order.getStatus().equals(OrderStatus.READY_FOR_PAYMENT)).collect(Collectors.toList());
 
         return activeOrders;
@@ -87,15 +87,64 @@ public class RegisterController {
         return order;
     }
 
-    @PostMapping("/order/register/{regid}/pay/reward/{customerId}/amount/{amount}")
-    Message makePayment(@PathVariable Long regid, @PathVariable String customerId, @PathVariable String amount){
+    @PostMapping("/order/register/{regid}/pay/reward/{customerId}")
+    Message makePaymentRewards(@PathVariable Long regid, @PathVariable String customerId){
+
+        List<Order> allOrdersReadyForPayment = allActiveOrdersRegID(regid);
+        double amount = 0;
+        for(Order order: allOrdersReadyForPayment){
+            amount+=order.getPrice();
+        }
+
         String url = "http://" + apiHost + ":" + serverPort + "/pay/reward/" + customerId + "/amount/" + amount;
 
         PaymentProcessingAPI api = new PaymentProcessingAPI();
         api.setHost(apiHost);
 
         PostResponse res = api.sendPost(url);
-        if(res.getCode() == 200 && res.getResponse().substring(8, 16).equals("SUCCESS")){
+        System.out.print("Result =>" + res.getResponse().substring(8, 15));
+        if(res.getCode() == 200 && res.getResponse().substring(8, 15).equals("SUCCESS")){
+            // set all ready for payment orders are payed
+            for(Order order: allOrdersReadyForPayment){
+                order.setStatus(OrderStatus.PAYED);
+                orderRepository.save(order);
+            }  
+
+            return new Message("SUCCESS");
+        }
+        else{
+            return new Message("FAILURE");
+        }        
+    }
+
+
+    @PostMapping("/order/register/{regid}/pay/card/{cardnum}")
+    Message makePaymentCard(@PathVariable Long regid, @PathVariable String cardnum){
+
+        List<Order> allOrdersReadyForPayment = allActiveOrdersRegID(regid);
+        double amount = 0;
+        for(Order order: allOrdersReadyForPayment){
+            amount+=order.getPrice();
+        }
+
+        if(amount-0.0 <= 0.1){
+            return new Message("SUCCESS");
+        }
+
+        String url = "http://" + apiHost + ":" + serverPort + "/pay/card/" + cardnum + "/amount/" + amount;
+
+        PaymentProcessingAPI api = new PaymentProcessingAPI();
+        api.setHost(apiHost);
+
+        PostResponse res = api.sendPost(url);
+        System.out.print("Result =>" + res.getResponse());
+        if(res.getCode() == 200 && res.getResponse().substring(8, 15).equals("SUCEESS")){
+            // set all ready for payment orders are payed
+            for(Order order: allOrdersReadyForPayment){
+                order.setStatus(OrderStatus.PAYED);
+                orderRepository.save(order);
+            }  
+
             return new Message("SUCCESS");
         }
         else{
@@ -106,16 +155,14 @@ public class RegisterController {
 
     @DeleteMapping("/order/register/{regId}")
         Message deleteOrders(@PathVariable Long regId){
-            ArrayList<Long> ids = new ArrayList<>();
-            ids.add(regId);
-    
-            List<Order> orders = orderRepository.findAllById(ids);
+            
+            List<Order> orders = orderRepository.findAllByRegId(regId);
             List<Order> deleteOrders = orders.stream().filter(order -> order.getStatus().equals(OrderStatus.READY_FOR_PAYMENT)).collect(Collectors.toList());
 
 
             orderRepository.deleteAll(deleteOrders);
 
-            Message status = new Message(" All READY_FOR_PAYMENT order deleted from" + regId);
+            Message status = new Message("All READY_FOR_PAYMENT order deleted from" + regId);
 
             return status;
     }
