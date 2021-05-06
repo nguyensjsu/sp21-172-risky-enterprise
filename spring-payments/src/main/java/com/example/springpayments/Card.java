@@ -31,17 +31,21 @@ import lombok.Data;
     @Column(name = "cardNumber")
     private String cardNumber;
 
-    private String cardCode;
-    private double balance;
     private boolean activated;
+    private String expMonth;
+    private String expYear;
+    private String cvv;
+    private String cardType;
 
     public Card(){};
 
-    public Card(String cardNumber, String cardCode, double balance, boolean activated){
+    public Card(String cardNumber, boolean activated, String expMonth, String expYear, String cardType, String cvv){
         this.cardNumber = cardNumber;
-        this.cardCode = cardCode;
-        this.balance = balance;
         this.activated = activated;
+        this.expMonth = expMonth;
+        this.expYear = expYear;
+        this.cvv = cvv;
+        this.cardType = cardType;
     }
 
     public void setCustomer(Customer customer){

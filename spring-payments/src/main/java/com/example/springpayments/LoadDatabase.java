@@ -31,9 +31,10 @@ class LoadDatabase {
         c1.setUserName("userName");
         c1.setPassword("password");
         c1.setCity("city");
-        c1.setState("state");
-        c1.setZip("zip");
-        c1.setPhoneNumber("(916) 267-5317");
+        c1.setState("CA");
+        c1.setZip("94105");
+        c1.setPhoneNumber("9162675317");
+        c1.setEmail("test@cybs.com");
         c1.setRewards(10);
         customerRepository.save(c1);
     
