@@ -82,8 +82,8 @@ public class PaymentProcessingAPI {
 
             System.out.println("Response Payload : " + response.toString());
             PostResponse res = new PostResponse() ;
-            res.code = responseCode ;
-            res.response = response.toString() ;
+            res.setCode(responseCode) ;
+            res.setResponse(response.toString());
             return res;
         }
         catch(Exception exception){
@@ -103,9 +103,9 @@ public class PaymentProcessingAPI {
             System.out.println("Response Payload : " + response.toString());
             System.out.println(exception);
             PostResponse res = new PostResponse() ;
-            res.code = responseCode ;
-            res.exception =  exception.toString() ;
-            res.response = response.toString() ;
+            res.setCode(responseCode) ;
+            res.setException(exception.toString()) ;
+            res.setResponse(response.toString());
             return res ;     
         }
     }

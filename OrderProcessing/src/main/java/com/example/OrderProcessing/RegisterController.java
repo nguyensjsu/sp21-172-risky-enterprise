@@ -95,7 +95,7 @@ public class RegisterController {
         api.setHost(apiHost);
 
         PostResponse res = api.sendPost(url);
-        if(res.getCode() == 200 && res.getMessage().substring(8, 16).equals("SUCCESS")){
+        if(res.getCode() == 200 && res.getResponse().substring(8, 16).equals("SUCCESS")){
             return new Message("SUCCESS");
         }
         else{
