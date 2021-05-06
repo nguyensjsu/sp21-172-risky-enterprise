@@ -36,6 +36,12 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.GetMapping; 
 import org.springframework.web.bind.annotation.RequestParam; 
 
+import org.springframework.beans.factory.annotation.Value;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -46,6 +52,9 @@ import java.util.ArrayList;
 public class RegisterController {
 
     private final OrderRepository orderRepository;
+
+    @Value("${paymentprocessing.serverport}")private String serverPort;
+    @Value("${paymentprocessing.apihost}") private String apiHost;
 
     RegisterController(OrderRepository orderRepository){
         this.orderRepository = orderRepository;
@@ -70,7 +79,7 @@ public class RegisterController {
     }
 
     @PostMapping("/order/register/{regId}")
-    Order addCard(@PathVariable Long regId, @RequestBody Order order){
+    Order addOrder(@PathVariable Long regId, @RequestBody Order order){
         order.setRegId(regId);
         order.setStatus(OrderStatus.READY_FOR_PAYMENT);
 
@@ -78,11 +87,20 @@ public class RegisterController {
         return order;
     }
 
-    @PostMapping("/order/register/{regid}/pay/{cardnum}")
-    Message makePayment(@PathVariable Long regid, @PathVariable String cardnum){
+    @PostMapping("/order/register/{regid}/pay/reward/{customerId}/amount/{amount}")
+    Message makePayment(@PathVariable Long regid, @PathVariable String customerId, @PathVariable String amount){
+        String url = "http://" + apiHost + ":" + serverPort + "/pay/reward/" + customerId + "/amount/" + amount;
 
-        
-        return null;
+        PaymentProcessingAPI api = new PaymentProcessingAPI();
+        api.setHost(apiHost);
+
+        PostResponse res = api.sendPost(url);
+        if(res.getCode() == 200 && res.getMessage().substring(8, 16).equals("SUCCESS")){
+            return new Message("SUCCESS");
+        }
+        else{
+            return new Message("FAILURE");
+        }        
     }
 
 
