@@ -1,56 +1,41 @@
 <!DOCTYPE html>
 
 <head>
+    <link rel = "stylesheet" href = "style.css">
     <title>Cashier App: Hot Coffee</title>
-    <style>
-    
-    h1 {
-        padding-left: 30px;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-
-    hr {
-        width: 80%;
-        float: left;
-    }
-    
-    h3 {
-        font-weight: normal;
-        font-family: serif;
-    }
-    .column {
-    float: left;
-    width: 10%;
-    }
-
-    .smallcolumn{
-        float: left;
-        width: 10%;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-    content: "";
-    display: table;
-    clear: both;
-    }
-
-    body {
-        padding-left: 100px;
-    }
-    </style>
 </head>
 
 <body>
-    <h1> Hot Coffee </h1>
-    <br>
-    <h2> Americanos </h2>
-    <hr> 
-    <br>
-    <br>
+    <h1> Hot Coffee </h1> <br>
+    <h2> Americanos </h2> <hr> <br> <br>
+    <div class = "space"> 
+        <div class = "fixed" style="padding: 30px;">
+            <form action = "">
+                <select class="select" id="milk" name="milk">
+                    <option value="1">Whole Milk</option>
+                    <option value="2">2% Milk</option>
+                    <option value="3">Nonfat Milk</option>
+                    <option value="4">Almond Milk</option>
+                    <option value="5">Soy Milk</option>
+                </select>
+            </form>
+            <br> <br> <br>
+            <form action = "">
+                <select class="select" id="size" name="size">
+                    <option value="1">Tall (12 ounces)</option>
+                    <option value="2">Grande (16 ounces)</option>
+                    <option value="3">Venti (24 ounces)</option>
+                </select>
+            </form>
+            <br> <br> <br>
+            <input type= "text" id="message" name = "message" placeholder="Additional Instructions" style="width: 300px; height: 200px;">
+            <br> <br> <br>
+            <input type="submit" name="event" id="btnSubmitOrder" value="Submit Order" style="float: right;">
+        </div>
+    </div>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/HotCoffee.PNG" width = "140" height="125"> 
+            <img src = "HotCoffee/HotCoffee.PNG" width = "140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Caffe Americano</h3>
@@ -61,34 +46,34 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Blonde Roast</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/CaffeMisto.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/CaffeMisto.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Caffe Misto</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Dark Roast Coffee</h3>
-        </div>
-        <div class="column">
-            <img src = "../static/HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
-        </div>
-        <div class="smallcolumn">
-            <h3>Pike Place Roast</h3>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <h3>Pike Place Roast</h3>
+        </div>
+        <div class="column">
+            <img src = "HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Decaf Pike Place Roast</h3>
@@ -99,7 +84,7 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/Cappuccino.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/Cappuccino.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Cappuccino</h3>
@@ -110,13 +95,13 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/Espresso.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/Espresso.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Espresso</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/EspressoPanna.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/EspressoPanna.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Espresso Con Panna</h3>
@@ -127,13 +112,13 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/FlatWhite.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/FlatWhite.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Flat White</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/HoneyFlat.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/HoneyFlat.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Honey Almondmilk Flat White</h3>
@@ -144,40 +129,40 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotTea/HotTea.PNG" width="140" height="125"> 
+            <img src = "HotTea/HotTea.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Pistachio</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/CaffeLatte.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/CaffeLatte.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Caffe Latte</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/CinnamonLatte.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/CinnamonLatte.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Cinnamon Dolce Latte</h3>
-        </div>
-        <div class="column">
-            <img src = "../static/HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
-        </div>
-        <div class="smallcolumn">
-            <h3>Reserve Latte</h3>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <h3>Reserve Latte</h3>
+        </div>
+        <div class="column">
+            <img src = "HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Reserve Hazelnut Bianco Latte</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/CaffeLatte.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/CaffeLatte.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Blonde Vanilla Latte</h3>
@@ -188,13 +173,13 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/CaramelMacchiato.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/CaramelMacchiato.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Caramel Macchiato</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/EspressoMacchiato.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/EspressoMacchiato.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Espresso Macchiato</h3>
@@ -205,19 +190,19 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/CaffeMocha.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/CaffeMocha.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Caffe Mocha</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>Dark Chocolate Mocha</h3>
         </div>
         <div class="column">
-            <img src = "../static/HotCoffee/WhiteChocoalteMocha.PNG" width="140" height="125"> 
+            <img src = "HotCoffee/WhiteChocoalteMocha.PNG" width="140" height="125"> 
         </div>
         <div class="smallcolumn">
             <h3>White Chocolate Mocha</h3>

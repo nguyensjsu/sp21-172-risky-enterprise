@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 
 <head>
+    <link rel = "stylesheet" href = "style.css">
     <title>Cashier App</title>
     <style>
-    
-    h1 {
-        padding-left: 30px;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-
-    hr {
+        hr {
         width: 80%;
         float: left;
-    }
-    
-    h3 {
-        font-weight: normal;
-        font-family: serif;
-    }
-    .column {
-    float: left;
-    width: 10%;
-    }
-
-    .smallcolumn{
-        float: left;
-        width: 10%;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-    content: "";
-    display: table;
-    clear: both;
-    }
-
-    body {
-        padding-left: 100px;
-    }
+        }
     </style>
 </head>
 
@@ -48,25 +18,33 @@
     <br>
     <div class="row">
         <div class="column">
-            <img src = "../static/HotCoffee/HotCoffee.PNG"> 
+            <a href = "/hotcoffee">
+                <img src = "HotCoffee/HotCoffee.PNG" name = "action" value = "hot coffee"> 
+            </a>
         </div>
         <div class="smallcolumn">
             <h2>Hot Coffee</h2>
         </div>
         <div class="column">
-            <img src = "../static/HotTea/HotTea.PNG"> 
+            <a href = "/hottea">
+                <img src = "HotTea/HotTea.PNG"> 
+            </a>
         </div>
         <div class="smallcolumn">
             <h2>Hot Teas</h2>
         </div>
         <div class="column">
-            <img src = "../static/HotDrink/HotDrinks.PNG"> 
+            <a href = "/hotdrinks">
+                <img src = "HotDrink/HotDrinks.PNG"> 
+            </a>
         </div>
         <div class="smallcolumn">
             <h2>Hot Drinks</h2>
         </div>
         <div class="column">
-            <img src = "../static/Frappuccino/Frappuccino.PNG"> 
+            <a href = "/frappuccino">
+                <img src = "Frappuccino/Frappuccino.PNG"> 
+            </a>
         </div>
         <div class="smallcolumn">
             <h2>Frappuccino</h2>
