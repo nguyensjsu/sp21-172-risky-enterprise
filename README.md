@@ -28,10 +28,6 @@
    <details><summary>Archtecure Design 1</summary><img src="images/MicroServiceArchitecture.png"></details>
    <details><summary>Archtecure Design 2</summary><img src="images/MicroServiceArchitecture-2.png"></details>
 
-
-
-
-
 --- 
 &nbsp;
 ## Meeting Journal
