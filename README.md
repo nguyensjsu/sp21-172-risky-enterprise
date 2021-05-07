@@ -1,6 +1,5 @@
 #  Risky Enterprise Team Project Journal
 
-
 --- 
 &nbsp;
 
