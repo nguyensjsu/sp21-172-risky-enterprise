@@ -30,12 +30,11 @@ public class Order {
     public Order(){}
 
 
-    public Order(Long regId, String drink, String milk, String size, double price){
+    public Order(Long regId, String drink, String milk, String size){
         this.regId = regId;
         this.drink = Drink.valueOf(drink.toUpperCase());
         this.milk = Milk.valueOf(milk.toUpperCase());
         this.size = CoffeeSize.valueOf(size.toUpperCase());
-        this.price = price;
     }
 
     

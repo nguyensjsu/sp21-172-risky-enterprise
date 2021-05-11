@@ -13,6 +13,9 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 
+import org.springframework.beans.factory.annotation.Value;
+
+
 
 
 public class PaymentProcessingAPI {
@@ -20,8 +23,10 @@ public class PaymentProcessingAPI {
 
     private static String requestHost;
 
+    private static String APIKEY;
 
     public static void setHost( String h ) { requestHost = h ; }
+    public static void setKey( String k ) { APIKEY = k ; }
 
     private final String USER_AGENT = "Mozilla/5.0";
     public static String postRequestTarget = "REQUEST_TARGET_PALCEHOLDER";
@@ -33,22 +38,32 @@ public class PaymentProcessingAPI {
     public PostResponse sendPost(String url){
         HttpURLConnection con = null ;
         int responseCode = 0 ;
+
+
         try{
             /* HTTP connection */
             URL obj = new URL(url); // my url contains all info
             con = (HttpURLConnection)obj.openConnection();
-
+           
             /* Add Request Header
             * "Host" Name of the host to send the request to.
             */
            con.setRequestProperty("Host", requestHost);
 
+           
            /* HTTP Method POST */
            con.setRequestMethod("POST");
 
            /* Additional Request Headers */
            con.setRequestProperty("User-Agent", USER_AGENT);
            con.setRequestProperty("Content-Type", "application/json");
+
+           /* Add Request Header
+            * Secret api key for connecting to apis
+            */
+            System.out.print(APIKEY);
+            con.setRequestProperty("apikey", APIKEY);
+
 
            // Send POST request
            con.setDoOutput(true);
@@ -86,6 +101,7 @@ public class PaymentProcessingAPI {
             res.setResponse(response.toString());
             return res;
         }
+
         catch(Exception exception){
              // Output unexpected IOExceptions
              BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));

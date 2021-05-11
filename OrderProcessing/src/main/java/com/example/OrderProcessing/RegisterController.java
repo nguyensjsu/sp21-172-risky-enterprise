@@ -39,12 +39,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
+
 
 
 
@@ -55,9 +56,16 @@ public class RegisterController {
 
     @Value("${paymentprocessing.serverport}")private String serverPort;
     @Value("${paymentprocessing.apihost}") private String apiHost;
+    @Value("${paymentprocessing.apikey}") private String apiKey;
+
+
+    private Map<CoffeeSize, Double> sizeToPrice = new HashMap<>();
 
     RegisterController(OrderRepository orderRepository){
         this.orderRepository = orderRepository;
+        sizeToPrice.put(CoffeeSize.GRANDE, 1.5);
+        sizeToPrice.put(CoffeeSize.MEDIUM, 1.2);
+        sizeToPrice.put(CoffeeSize.SMALL, 0.8);
     }
     
     @GetMapping("/ping")
@@ -83,6 +91,8 @@ public class RegisterController {
         order.setRegId(regId);
         order.setStatus(OrderStatus.READY_FOR_PAYMENT);
 
+        order.setPrice(round(2.85*sizeToPrice.get(order.getSize()), 2));
+
         orderRepository.save(order);
         return order;
     }
@@ -100,6 +110,7 @@ public class RegisterController {
 
         PaymentProcessingAPI api = new PaymentProcessingAPI();
         api.setHost(apiHost);
+        api.setKey(apiKey);
 
         PostResponse res = api.sendPost(url);
         System.out.print("Result =>" + res.getResponse().substring(8, 15));
@@ -135,6 +146,8 @@ public class RegisterController {
 
         PaymentProcessingAPI api = new PaymentProcessingAPI();
         api.setHost(apiHost);
+        api.setKey(apiKey);
+
 
         PostResponse res = api.sendPost(url);
         System.out.print("Result =>" + res.getResponse());
@@ -153,16 +166,16 @@ public class RegisterController {
     }
 
 
-    @DeleteMapping("/order/register/{regId}")
-        Message deleteOrders(@PathVariable Long regId){
+    @DeleteMapping("/order/register/{regId}/order/{orderId}")
+        Message deleteOrders(@PathVariable Long regId, @PathVariable Long orderId){
             
-            List<Order> orders = orderRepository.findAllByRegId(regId);
-            List<Order> deleteOrders = orders.stream().filter(order -> order.getStatus().equals(OrderStatus.READY_FOR_PAYMENT)).collect(Collectors.toList());
+            // List<Order> orders = orderRepository.findAllByRegId(regId);
+            // List<Order> deleteOrders = orders.stream().filter(order -> order.getStatus().equals(OrderStatus.READY_FOR_PAYMENT)).collect(Collectors.toList());
 
 
-            orderRepository.deleteAll(deleteOrders);
+            orderRepository.deleteById(orderId);
 
-            Message status = new Message("All READY_FOR_PAYMENT order deleted from" + regId);
+            Message status = new Message("Order ID : " + orderId + " Deleted");
 
             return status;
     }
@@ -174,5 +187,13 @@ public class RegisterController {
             return status;
     }
 
+
+    public double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+    
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 
 }

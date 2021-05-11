@@ -1,0 +1,1284 @@
+{
+	"info": {
+		"_postman_id": "a46205ad-ff51-4893-ac66-1f0db578cf47",
+		"name": "SPRING STARBUCKS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "OrderPorcessing",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/ping",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"orderid\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"LATTE\",\n\t\"milk\":  \"WHOLE_MILK\",\n\t\"size\":  \"GRANDE\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/order/register/5012349",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"order",
+								"register",
+								"5012349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"Caffe Latte\",\n\t\"milk\":  \"Whole\",\n\t\"size\":  \"Grande\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/order/register/5012349",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"order",
+								"register",
+								"5012349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay for Order using Rewards",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"orderid\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"Caffe Latte\",\n\t\"milk\":  \"Whole\",\n\t\"size\":  \"Grande\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}//order/register/5012349/pay/reward/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"",
+								"order",
+								"register",
+								"5012349",
+								"pay",
+								"reward",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"Caffe Latte\",\n\t\"milk\":  \"Whole\",\n\t\"size\":  \"Grande\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/order/register/5012349/order/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"order",
+								"register",
+								"5012349",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Orders",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"Caffe Latte\",\n\t\"milk\":  \"Whole\",\n\t\"size\":  \"Grande\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/orders",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay using cards",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/order/register/5012349//pay/card/4111111111111111",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"order",
+								"register",
+								"5012349",
+								"",
+								"pay",
+								"card",
+								"4111111111111111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentProcessing",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/ping",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"cardnum\", response.cardNumber);",
+									"postman.setGlobalVariable(\"cardcode\", response.cardCode);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\" : \"4111111111111111\",\n    \"expMonth\": \"12\",\n    \"expYear\": \"2031\",\n    \"cvv\":\"11\",\n    \"cardType\": \"001\",\n    \"activated\": false\n}\n\n  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/card/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"card",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/cards/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"cards",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/card/activate/4111111111111111/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"card",
+								"activate",
+								"4111111111111111",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Card",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/card/3/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"card",
+								"3",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add reward",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"orderid\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"LATTE\",\n\t\"milk\":  \"WHOLE_MILK\",\n\t\"size\":  \"GRANDE\",\n    \"price\": 2.15\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/order/register/5012349",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"order",
+								"register",
+								"5012349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay for Order using card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"orderid\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"Caffe Latte\",\n\t\"milk\":  \"Whole\",\n\t\"size\":  \"Grande\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/pay/card/4111111111111111/amount/100",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"pay",
+								"card",
+								"4111111111111111",
+								"amount",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rewards",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"Caffe Latte\",\n\t\"milk\":  \"Whole\",\n\t\"size\":  \"Grande\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/orders",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"drink\": \"Caffe Latte\",\n\t\"milk\":  \"Whole\",\n\t\"size\":  \"Grande\"\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/order/register/5012349",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"order",
+								"register",
+								"5012349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay for Order using rewards",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/pay/reward/1/amount/5.85",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"pay",
+								"reward",
+								"1",
+								"amount",
+								"5.85"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Starbucks API (Kong)",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{api_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/ping",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"cardnum\", response.cardNumber);",
+									"postman.setGlobalVariable(\"cardcode\", response.cardCode);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{api_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/cards?apikey={{api_key}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/cards?apikey={{api_key}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Card",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/card/{{cardnum}}?apikey={{api_key}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"card",
+								"{{cardnum}}"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/card/activate/{{cardnum}}/{{cardcode}}?apikey={{api_key}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"card",
+								"activate",
+								"{{cardnum}}",
+								"{{cardcode}}"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Kong API Gateway",
+			"item": [
+				{
+					"name": "Kong Server Status (Docker)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/status",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Cluster Endpoints (Docker)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/endpoints",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"endpoints"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Node Information (Docker)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong List Services (Docker)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Add Service (Docker)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"starbucks\",\n    \"protocol\": \"http\",\n    \"url\": \"http://starbucks-api:8080/\"\n}"
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Get Service Details (Docker)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Delete Service (Docker)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Add Route (Docker)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"starbucks\",\n    \"protocols\": [ \"http\" ],\n    \"methods\": [ \"GET\", \"POST\", \"PUT\", \"DELETE\" ],\n    \"paths\": [ \"/api\" ],\n    \"strip_path\": false,\n    \"preserve_host\": true,\n    \"service\":\n    {\n    \t\"name\": \"starbucks\"\n    }\n}"
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/routes",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Get Route Details (Docker)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/routes/starbucks",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"routes",
+								"starbucks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Delete Route (Docker)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/routes/starbucks",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"routes",
+								"starbucks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong List Routes (Docker)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/routes",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong List Service Routes (Docker)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks/routes",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks",
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Plugin Add Logfile (Docker)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "file-log",
+									"type": "text"
+								},
+								{
+									"key": "config.path",
+									"value": "/tmp/kong.log",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks/plugins",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks",
+								"plugins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Plugin Add Resp Transformer (Docker)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "response-transformer",
+									"type": "text"
+								},
+								{
+									"key": "config.remove.json",
+									"value": "links",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks/plugins",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks",
+								"plugins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Plugin Add API Key Auth (Docker)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "key-auth",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks/plugins",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks",
+								"plugins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Plugin Remove from Service (Docker)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks/plugins/{{plugin_id}}",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks",
+								"plugins",
+								"{{plugin_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong Get List of Service Plugins (Docker)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/services/starbucks/plugins",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"services",
+								"starbucks",
+								"plugins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong API Client Add (Docker)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "apiclient",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/consumers/",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"consumers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong  API Client Add Key (Docker)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"starbucks_api_key\", response.key);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/consumers/apiclient/key-auth",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"consumers",
+								"apiclient",
+								"key-auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong API Client Delete (Docker)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "apiclient",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/consumers/apiclient",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"consumers",
+								"apiclient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kong API Clients List (Docker)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{kong_host}}:{{kong_port}}/consumers",
+							"protocol": "http",
+							"host": [
+								"{{kong_host}}"
+							],
+							"port": "{{kong_port}}",
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
