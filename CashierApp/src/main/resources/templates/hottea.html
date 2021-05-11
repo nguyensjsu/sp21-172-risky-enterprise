@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel = "stylesheet" href = "style.css">
+    <title>Cashier App: Hot Tea</title>
+</head>
+
+<a href = "/">
+    <p> BACK</p>
+</a>
+
+<body>
+    <h1>Hot Teas</h1>
+    <br>
+    <h2>Chai Teas</h2>
+    <form name="form" th:object="${command}" method="post">
+    <div class = "space"> 
+        <div class = "fixed" style="padding: 40px;">
+            <form>
+                <h2>Size Options:</h2>
+                <select class="select" id="size" name="size" th:field="*{size}">
+                    <option value="Tall">Tall</option>
+                    <option value="Grande">Grande</option>
+                    <option value="Venti">Venti</option>
+                </select>
+                <br> <br> <br>
+                <h2>Drink options:</h2>
+                <select class="select" id="milk" name="milk" th:field="*{milk}">
+                    <option value="Whole Milk">Whole Milk</option>
+                    <option value="2% Milk">2% Milk</option>
+                    <option value="Nonfat Milk">Nonfat Milk</option>
+                    <option value="Almond Milk">Almond Milk</option>
+                    <option value="Soy Milk">Soy Milk</option>
+                </select>
+            <br> <br> <br>
+            <input type= "text" id="message" name = "message" placeholder="Additional Instructions" style="width: 300px; height: 200px;" th:field="*{message}">
+            <br> <br> <br>
+            <input type="submit" name="event" id="btnSubmitOrder" value="Submit Order" style="float: right;">
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="column">
+            <img src = "HotTea/HotTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "chaiLatte" value = "CHAI LATTE" th:field="*{drink}">
+            <Label for ="chaiLatte">Chai Latte</Label>
+        </div>
+        <div class="column">
+            <img src = "HotTea/ChaiTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "chaiTea" value = "CHAI TEA" th:field="*{drink}">
+            <Label for ="chaiTea">Chai Tea</Label>
+        </div>
+    </div>
+    <h2>Black Teas</h2>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="column">
+            <img src = "HotTea/ChaiTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "earlGreyTea" value = "EARL GREY TEA" th:field="*{drink}">
+            <Label for ="earlGreyTea">Earl Grey Tea</Label>
+        </div>
+        <div class="column">
+            <img src = "HotTea/HotTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "londonFogTeaLatte" value = "LONDON FOG TEA LATTE" th:field="*{drink}">
+            <Label for ="londonFogTeaLatte">London Fog Tea Latte</Label>
+        </div>
+        <div class="column">
+            <img src = "HotTea/ChaiTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "royalEnglishBreakfastTea" value = "ROYAL ENGLISH BREAKFAST TEA" th:field="*{drink}">
+            <Label for ="royalEnglishBreakfastTea">Royal English Breakfast Tea</Label>
+        </div>
+    </div>
+    <br>
+    <div class = "row">
+        <div class="column">
+            <img src = "HotTea/HotTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "royalEnglishBreakfastTeaLatte" value = "ROYAL ENGLISH BREAKFAST TEA LATTE" th:field="*{drink}">
+            <Label for ="royalEnglishBreakfastTeaLatte">Royal English Breakfast Tea Latte</Label>
+        </div>
+    </div>
+    <h2>Green Teas</h2>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="column">
+            <img src = "HotTea/Emperor'sCloud.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "emperorCloudsMist" value = "EMPEROR'S CLOUDS AND MIST" th:field="*{drink}">
+            <Label for ="emperorCloudsMist">Emperor's Clouds & Mist</Label>
+        </div>
+        <div class="column">
+            <img src = "HotTea/MatchaTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "matchaGreenTeaLatte" value = "MATCHA GREEN TEA LATTE" th:field="*{drink}">
+            <Label for ="matchaGreenTeaLatte">Matcha Green Tea Latte</Label>
+        </div>
+        <div class="column">
+            <img src = "HotTea/HoneyCitrusMintTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "honeyCitrusMintTea" value = "HONEY CITRUS MINT TEA" th:field="*{drink}">
+            <Label for ="honeyCitrusMintTea">Honey Citrus Mint Tea</Label>
+        </div>
+    </div>
+    <br>
+    <div class = "row">
+        <div class="column">
+            <img src = "HotTea/ChaiTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "jadeCitrusMintBrewedTea" value = "JADE CITRUS MINT BREWED TEA" th:field="*{drink}">
+            <Label for ="jadeCitrusMintBrewedTea">Jade Citrus Mint Brewed Tea</Label>
+        </div>
+    </div>
+    <h2>Herbel Teas</h2>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="column">
+            <img src = "HotTea/HoneyCitrusMintTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "mintMajesty" value = "MINT MAJESTY" th:field="*{drink}">
+            <Label for ="mintMajesty">Mint Majesty</Label>
+        </div>
+        <div class="column">
+            <img src = "HotTea/HoneyCitrusMintTea.PNG" width = "140" height="125"> 
+        </div>
+        <div class="smallcolumn">
+            <input type = "radio" id = "peachTranquility" value = "PEACH TRANQUILITY" th:field="*{drink}">
+            <Label for ="peachTranquility">Peach Tranquility</Label>
+        </div>
+    </div>
+    </form>
+    </form>
+</body>
