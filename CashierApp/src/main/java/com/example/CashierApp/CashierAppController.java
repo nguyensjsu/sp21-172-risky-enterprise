@@ -42,7 +42,6 @@ public class CashierAppController {
     public String getAction(Model model) {
         log.info("Application Started");
         return "order" ;
-
     }
 
     @PostMapping

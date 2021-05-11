@@ -37,17 +37,20 @@ import lombok.Setter;
 @RequestMapping("/hotdrinks")
 public class HotDrinksController {
     @GetMapping
-    public String getAction(Model model) {
+    public String getAction(@ModelAttribute("command") Order command, Model model) {
         log.info("Hot Drinks Page");
         return "hotdrinks";
 
     }
 
     @PostMapping
-    public String postAction(@RequestParam(value="action", required=true) String action,
-                            Errors errors, Model model, HttpServletRequest request) {
+    public String postAction(@Valid @ModelAttribute("command") Order command,
+        Errors errors, Model model, HttpServletRequest request) {
     
-        log.info("test");
+        log.info(command.getMilk());
+        log.info(command.getSize());
+        log.info(command.getMessage());
+        log.info(command.getDrink());
                                 
     
         return "hotdrinks";
