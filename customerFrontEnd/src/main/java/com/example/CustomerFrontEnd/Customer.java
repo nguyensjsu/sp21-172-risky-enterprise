@@ -1,8 +1,9 @@
 
-package com.example.springpayments;
+package com.example.CustomerFrontEnd;
 
 
-import java.util.List;
+import java.util.*;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.
+                                          SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 
 import lombok.Data;
 
@@ -21,7 +27,7 @@ import lombok.Data;
 @Entity
 @Table(name="CUSTOMER")
 @Data
-public class Customer {
+public class Customer implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,4 +49,33 @@ public class Customer {
 
     @OneToMany(mappedBy="customer", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Card> cards;
+
+    
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+
 }

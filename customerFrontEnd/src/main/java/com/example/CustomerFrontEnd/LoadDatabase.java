@@ -1,4 +1,4 @@
-package com.example.springpayments;
+package com.example.CustomerFrontEnd;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.context.annotation.Profile;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+
 
 
 @Configuration
@@ -13,6 +21,10 @@ class LoadDatabase {
 
   private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
+  @Autowired
+    private PasswordEncoder passwordEncoder;
+
+  @Profile("dev")
   @Bean
   @Transactional
   CommandLineRunner initDatabase(CustomerRepository customerRepository) {
@@ -28,8 +40,8 @@ class LoadDatabase {
         c1.setFirstName("firstName");
         c1.setLastName("lastName");
         c1.setAddress("address");
-        c1.setUsername("userName");
-        c1.setPassword("password");
+        c1.setUsername("username");
+        c1.setPassword(passwordEncoder.encode("password"));
         c1.setCity("city");
         c1.setState("CA");
         c1.setZip("94105");

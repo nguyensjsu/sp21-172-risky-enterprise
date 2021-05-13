@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Starbucks Customer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../static/creditcardStyle.css" />
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Poppins", sans-serif
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .w3-half img {
+    margin-bottom: -6px;
+    margin-top: 16px;
+    opacity: 0.8;
+    cursor: pointer
+  }
+
+  .w3-half img:hover {
+    opacity: 1
+  }
+</style>
+
+<body>
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-white w3-collapse w3-top w3-large w3-padding"
+    style="z-index:3;width:200px;font-weight:bold;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft"
+      style="width:100%;font-size:22px">Close Menu</a>
+    <div class="w3-container">
+      <h3 class="w3-padding-64"><a href="#" id="logo"><img src="../static/images/starbucks_logo.png"></a></h3>
+    </div>
+    <div class="w3-bar-block w3-text-gray">
+      <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+      <a href="#reward" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Reward</a>
+      <a href="#addCard" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Add New Card</a>
+      <div class="w3-bar-item w3-button w3-hover-white">
+          <form method="POST" th:action="@{/logout}">
+            <input type="submit" value="Logout"/>
+          </form>
+     </div>
+    </div>
+  </nav>
+
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+    id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+    <!-- Header -->
+    <div class="w3-container" style="margin-top:80px" id="showcase">
+      <h1 class="w3-jumbo w3-text-green"><b>Starbucks</b></h1>
+    </div>
+
+   
+
+    <!-- Reward -->
+    <div class="w3-container" id="reward" style="margin-top:75px">
+      <h1 class="w3-xlarge w3-text-green"><b>Reward</b></h1>
+      <hr style="width:60px;border:2px solid" class="w3-round w3-text-green">
+      <table style="width:80%">
+        <tr>
+          <th>Customer Name: ####</th>
+          <th>Current Reward: XX</th>
+          <th><input type="submit" name="action" id="process-payment" value="Redeem Reward" class="btn"></th>
+        </tr>
+      </table>
+
+    </div>
+
+
+    <!-- Payment -->
+    <div class="w3-container" id="payment" style="margin-top:75px">
+      <h1 class="w3-xlarge w3-text-green"><b>Pay</b></h1>
+      <hr style="width:60px;border:2px solid" class="w3-round w3-text-green">
+      <table style="width:80%">
+        <tr>
+          <th>Total: $XX.XX</th>
+          <th>With Card -XXXX</th>
+          <th><input type="submit" name="action" id="process-payment" value="Process Payment" class="btn"></th>
+        </tr>
+      </table>
+
+
+    </div>
+
+    <!-- Add Card -->
+    <div class="w3-container" id="addCard" style="margin-top:75px">
+      <h1 class="w3-xlarge w3-text-green"><b>Add New Card</b></h1>
+      <hr style="width:200px;border:2px solid" class="w3-round w3-text-green">
+
+      <form name="form" th:object="${command}" method="post" action="">
+
+        <table style="width:100%">
+
+          <div class="col-75">
+            <div class="fcontainer">
+              <div class="row">
+                
+
+                <div class="col-50">
+                  <h3>Payment</h3>
+                  <label for="fname">Accepted Cards</label>
+                  <div class="icon-container">
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                  </div>
+                  <label for="ccnum">Credit card number</label>
+                  <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"
+                    th:field="*{cardnum}">
+                  <label for="expmonth">Exp Month</label>
+                  <input type="text" id="expmonth" name="expmonth" placeholder="September" th:field="*{cardexpmon}">
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="expyear">Exp Year</label>
+                      <input type="text" id="expyear" name="expyear" placeholder="2018" th:field="*{cardexpyear}">
+                    </div>
+                    <div class="col-50">
+                      <label for="cvv">CVV</label>
+                      <input type="text" id="cvv" name="cvv" placeholder="352" th:field="*{cardcvv}">
+                    </div>
+                  </div>
+                  <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                  <input type="text" id="email" name="email" placeholder="john@example.com" th:field="*{email}">
+                  <label for="notes"> Notes</label>
+                  <input type="text" id="notes" name="notes" placeholder="special instructions" th:field="*{notes}">
+                </div>
+
+              </div>
+
+              <input type="submit" name="action" id="process-payment" value="Add Payment Method" class="btn">
+              <br />
+              <br />
+              <br />
+
+              <div th:if="${not#lists.isEmpty(messages)}">
+                <div class="messages">
+                  <ul th:each="m: ${messages}">
+                    <li th:text=${m.msg} />
+                  </ul>
+                </div>
+              </div>
+
+
+              <div class="message">
+                <span th:text="${message}" />
+              </div>
+
+              <br />
+              <br />
+            </div>
+          </div>
+    </div>
+
+    </form>
+  </div>
+
+  <!-- End page content -->
+  </div>
+
+  <!-- W3.CSS Container -->
+  <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+    <p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+        class="w3-hover-opacity">w3.css</a></p>
+  </div>
+
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Modal Image Gallery
+    function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+    }
+  </script>
+
+</body>
+
+</html>
