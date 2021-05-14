@@ -76,9 +76,8 @@
       <hr style="width:60px;border:2px solid" class="w3-round w3-text-green">
       <table style="width:80%">
         <tr>
-          <th>Customer Name: ####</th>
-          <th>Current Reward: XX</th>
-          <th><input type="submit" name="action" id="process-payment" value="Redeem Reward" class="btn"></th>
+          <th>Customer Name: <span th:text="${name}" /> </th>
+          <th>Current Reward: <span th:text="${reward}" /></th>
         </tr>
       </table>
 
@@ -87,14 +86,17 @@
 
     <!-- Payment -->
     <div class="w3-container" id="payment" style="margin-top:75px">
-      <h1 class="w3-xlarge w3-text-green"><b>Pay</b></h1>
+      <h1 class="w3-xlarge w3-text-green"><b>Registered Card Numbers</b></h1>
       <hr style="width:60px;border:2px solid" class="w3-round w3-text-green">
       <table style="width:80%">
-        <tr>
-          <th>Total: $XX.XX</th>
-          <th>With Card -XXXX</th>
-          <th><input type="submit" name="action" id="process-payment" value="Process Payment" class="btn"></th>
-        </tr>
+        
+          <div th:if="${cards!=null and !cards.isEmpty()}">
+                <ul th:each="c: ${cards}">
+                  <tr> 
+                      <li th:if = "${c != null}" th:text="${c.cardNumber}"/> 
+                  </tr>
+                </ul>
+          </div>
       </table>
 
 
@@ -105,15 +107,13 @@
       <h1 class="w3-xlarge w3-text-green"><b>Add New Card</b></h1>
       <hr style="width:200px;border:2px solid" class="w3-round w3-text-green">
 
-      <form name="form" th:object="${command}" method="post" action="">
+      <form name="form" th:object="${form}" method="post" action="">
 
         <table style="width:100%">
 
           <div class="col-75">
             <div class="fcontainer">
               <div class="row">
-                
-
                 <div class="col-50">
                   <h3>Payment</h3>
                   <label for="fname">Accepted Cards</label>
@@ -137,11 +137,7 @@
                       <label for="cvv">CVV</label>
                       <input type="text" id="cvv" name="cvv" placeholder="352" th:field="*{cardcvv}">
                     </div>
-                  </div>
-                  <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                  <input type="text" id="email" name="email" placeholder="john@example.com" th:field="*{email}">
-                  <label for="notes"> Notes</label>
-                  <input type="text" id="notes" name="notes" placeholder="special instructions" th:field="*{notes}">
+                  </div>       
                 </div>
 
               </div>
@@ -161,7 +157,7 @@
 
 
               <div class="message">
-                <span th:text="${message}" />
+                <span th:text="${message.msg}" />
               </div>
 
               <br />

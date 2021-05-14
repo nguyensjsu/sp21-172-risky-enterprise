@@ -27,14 +27,15 @@ class LoadDatabase {
   @Profile("dev")
   @Bean
   @Transactional
-  CommandLineRunner initDatabase(CustomerRepository customerRepository) {
+  CommandLineRunner initDatabase(CustomerRepository customerRepository, CardRepository cardRepository) {
 
     return args -> {
     //   cardRepository.save(new Card("498498082", "425", 20.0, false, ""));
     //   cardRepository.save(new Card("627131848", "547", 20.0, false, ""));
 
     //   cardRepository.findAll().forEach(card -> log.info("Preloaded " + card));
-
+        
+        
 
         Customer c1 = new Customer();
         c1.setFirstName("firstName");
@@ -49,6 +50,29 @@ class LoadDatabase {
         c1.setEmail("test@cybs.com");
         c1.setRewards(10);
         customerRepository.save(c1);
+
+        Card card1 = new Card();
+        card1.setCustomer(c1);
+        card1.setCardNumber("4111111111111111");
+        card1.setActivated(true);
+        card1.setExpYear("2020");
+        card1.setExpMonth("09");
+        card1.setCardType("001");
+        card1.setCvv("040");
+
+        cardRepository.save(card1);
+
+
+        Card card2 = new Card();
+        card2.setCustomer(c1);
+        card2.setCardNumber("4111111111111112");
+        card2.setActivated(true);
+        card2.setExpYear("2020");
+        card2.setExpMonth("09");
+        card2.setCardType("001");
+        card2.setCvv("040");
+
+        cardRepository.save(card2);
     
       customerRepository.findAll().forEach(customer -> log.info("Preloaded" + customer));
     };
