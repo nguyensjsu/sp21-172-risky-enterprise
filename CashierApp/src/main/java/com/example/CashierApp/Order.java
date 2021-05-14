@@ -5,13 +5,11 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class Order {
+    private int regId;
     private String drink;
     private String size;
     private String milk;
-    private String message;
-    private String price;
-
-    //public int calculatePrice(){
-    //    return 0;
-    //}
+    private String status;
+    private double price;
+    private int id;
 }

@@ -38,6 +38,11 @@ import lombok.Setter;
 @RequestMapping("/hotcoffee")
 public class HotCoffeeController {
 
+    private final String USER_AGENT = "Mozilla/5.0";
+    public static String postRequestTarget = "REQUEST_TARGET_PALCEHOLDER";
+    public static String APINAME = "APINAME_PLACEHOLDER";
+    public static String resource = "resource_PLACEHOLDER";
+
     @GetMapping
     public String getAction(@ModelAttribute("command") Order command, Model model) {
         log.info("Hot Coffee Page");
