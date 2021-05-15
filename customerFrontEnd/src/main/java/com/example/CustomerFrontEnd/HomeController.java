@@ -113,6 +113,7 @@ public class HomeController {
         model.addAttribute("name", currentPrincipalName);
         model.addAttribute("reward", customerRepository.findByUsername(currentPrincipalName).getRewards());
 
+
         List<Card> cards = customerRepository.findByUsername(currentPrincipalName).getCards();
         
         model.addAttribute("cards", cards);
