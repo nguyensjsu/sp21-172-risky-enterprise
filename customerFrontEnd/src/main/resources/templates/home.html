@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" href="../static/creditcardStyle.css" />
+<link rel="stylesheet" href="creditcardStyle.css" />
 <style>
   body,
   h1,
@@ -41,7 +41,7 @@
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft"
       style="width:100%;font-size:22px">Close Menu</a>
     <div class="w3-container">
-      <h3 class="w3-padding-64"><a href="#" id="logo"><img src="../static/images/starbucks_logo.png"></a></h3>
+      <h3 class="w3-padding-64"><a href="#" id="logo"><img src="/images/starbucks_logo.png"></a></h3>
     </div>
     <div class="w3-bar-block w3-text-gray">
       <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
@@ -77,7 +77,8 @@
       <table style="width:80%">
         <tr>
           <th>Customer Name: <span th:text="${name}" /> </th>
-          <th>Current Reward: <span th:text="${reward}" /></th>
+          <th>Customer ID: <span th:text="${customerid}" /> </th>
+          <th>Current Reward Amount: <span th:text="${'$' + reward}" /></th>
         </tr>
       </table>
 
@@ -93,7 +94,7 @@
           <div th:if="${cards!=null and !cards.isEmpty()}">
                 <ul th:each="c: ${cards}">
                   <tr> 
-                      <li th:if = "${c != null}" th:text="${c.cardNumber}"/> 
+                      <li th:if = "${c != null}" th:text="${'Card Number : ' + c.cardNumber.substring(0,4) + '-' + c.cardNumber.substring(4,8) + '-' + c.cardNumber.substring(8,12) + '-' + c.cardNumber.substring(12,16) }"/> 
                   </tr>
                 </ul>
           </div>
@@ -157,7 +158,7 @@
 
 
               <div class="message">
-                <span th:text="${message.msg}" />
+                <span th:if="${message != null}" th:text="${message.msg}" />
               </div>
 
               <br />

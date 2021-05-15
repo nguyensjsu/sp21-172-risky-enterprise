@@ -110,11 +110,14 @@ public class HomeController {
     public String getHome(@Valid @ModelAttribute("form") CardForm form, Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-        model.addAttribute("name", currentPrincipalName);
-        model.addAttribute("reward", customerRepository.findByUsername(currentPrincipalName).getRewards());
+
+        Customer customer =  customerRepository.findByUsername(currentPrincipalName);
+        model.addAttribute("name", customer.getUsername());
+        model.addAttribute("reward", customer.getRewards());
+        model.addAttribute("customerid", customer.getId());
 
 
-        List<Card> cards = customerRepository.findByUsername(currentPrincipalName).getCards();
+        List<Card> cards = customer.getCards();
         
         model.addAttribute("cards", cards);
 
@@ -129,30 +132,30 @@ public class HomeController {
         CheckRequiredFeilds(errors, form);
         FieldValidation(errors, form );
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        Customer customer =  customerRepository.findByUsername(currentPrincipalName);
+        model.addAttribute("name", customer.getUsername());
+        model.addAttribute("reward", customer.getRewards());
+        model.addAttribute("customerid", customer.getId());
+
+        List<Card> cards = customer.getCards();
+        
         if (errors.hasErrors()) {
             List<Message> messages = new ArrayList<>();
             for(ObjectError objectError: errors.getGlobalErrors()){
                 messages.add(new Message(objectError.getDefaultMessage()));
             }
             model.addAttribute( "messages", messages);
-
-                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String currentPrincipalName = authentication.getName();
-            model.addAttribute("name", currentPrincipalName);
-            model.addAttribute("reward", customerRepository.findByUsername(currentPrincipalName).getRewards());
-
-            List<Card> cards = customerRepository.findByUsername(currentPrincipalName).getCards();
             model.addAttribute("cards", cards);
-
             return "home";
         }
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentPrincipalName = authentication.getName();
-        Customer currCustomer = customerRepository.findByUsername(currentPrincipalName);
+        
 
         Card card = new Card();
-        card.setCustomer(currCustomer);
+        card.setCustomer(customer);
         card.setActivated(true);
         card.setCardNumber(form.getCardnum().replace("-", ""));
         card.setCardType(cardTypeToDigits.get(form.getCardnum().substring(0,1)));
@@ -162,15 +165,10 @@ public class HomeController {
 
         cardRepository.save(card);
 
-        model.addAttribute("name", currentPrincipalName);
-        model.addAttribute("reward", currCustomer.getRewards() );
-
-        List<Card> cards = customerRepository.findByUsername(currentPrincipalName).getCards();
-
+        // display the newly added 
+        cards.add(card);
         model.addAttribute("cards", cards);
-
         model.addAttribute("message", new Message("CARD succeffully uploaded"));
-
         return "home";
 
     }
