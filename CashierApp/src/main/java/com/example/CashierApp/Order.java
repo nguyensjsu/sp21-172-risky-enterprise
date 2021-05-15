@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class Order {
+public class Order extends Payload {
     private int regId;
     private String drink;
     private String size;
@@ -12,4 +12,6 @@ public class Order {
     private String status;
     private double price;
     private int id;
+    private String cardnumber;
+    private String rewardnumber;
 }

@@ -37,20 +37,53 @@ import lombok.Setter;
 @Controller
 @RequestMapping("/")
 public class CashierAppController {
+    private CyberSourceAPI api = new CyberSourceAPI();
+    private String message;
 
     @GetMapping
-    public String getAction(Model model) {
+    public String getAction(@ModelAttribute("command") Order command, Model model) throws Exception {
         log.info("Application Started");
+
+        OrderResponse response = new OrderResponse();
+        response = api.authorize(command, "order/register/5012349", "GetOrder");
+        System.out.println("\n\nAuth Response: " + response.toJson());
+
+        message = response.reply;
+        if (message.equals("[]"))
+            message = "No Orders Placed";
+
+        model.addAttribute("message", message);
         return "order" ;
     }
 
     @PostMapping
-    public String postAction(@RequestParam(value="action", required=true) String action,
-                            Errors errors, Model model, HttpServletRequest request) {
-    
-        log.info("test");
-                                
-    
+    public String postAction(@Valid @ModelAttribute("command") Order command,
+        @RequestParam(value="action", required=true) String action,
+        Errors errors, Model model, HttpServletRequest request) throws Exception {
+        
+        log.info(action);
+        if (action.equals("ClearOrder")){
+            OrderResponse response = new OrderResponse();
+            response = api.authorize(command, "orders", action);
+            System.out.println("\n\nAuth Response: " + response.toJson());
+            message = "No Orders";
+        }
+        if (action.equals("PayOrder")){
+            if(command.getCardnumber().isEmpty()){
+                OrderResponse response = new OrderResponse();
+                response = api.authorize(command, "order/register/5012349/pay/reward/" + command.getRewardnumber(), action);
+                System.out.println("\n\nAuth Response: " + response.toJson());
+                message = "No Orders";
+            }
+            else{
+                OrderResponse response = new OrderResponse();
+                response = api.authorize(command, "order/register/5012349/pay/card/" + command.getCardnumber(), action);
+                System.out.println("\n\nAuth Response: " + response.toJson());
+                message = "No Orders";
+            }
+        }
+
+        model.addAttribute("message", message);
         return "order";
 
     }
