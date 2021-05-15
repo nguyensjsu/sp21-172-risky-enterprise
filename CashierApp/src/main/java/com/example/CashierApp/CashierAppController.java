@@ -32,16 +32,23 @@ import org.springframework.beans.factory.annotation.Value;
 import lombok.extern.slf4j.Slf4j;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
+
 
 @Slf4j
 @Controller
 @RequestMapping("/")
 public class CashierAppController {
-    private CyberSourceAPI api = new CyberSourceAPI();
+
+    @Value("${orderprocessing.apihost}") private String apiHost;
+    @Value("${orderprocessing.apiport}") private String apiPort;
+
     private String message;
 
     @GetMapping
     public String getAction(@ModelAttribute("command") Order command, Model model) throws Exception {
+        CyberSourceAPI api = new CyberSourceAPI(apiHost, apiPort);
+
         log.info("Application Started");
 
         OrderResponse response = new OrderResponse();
@@ -60,6 +67,9 @@ public class CashierAppController {
     public String postAction(@Valid @ModelAttribute("command") Order command,
         @RequestParam(value="action", required=true) String action,
         Errors errors, Model model, HttpServletRequest request) throws Exception {
+        
+        CyberSourceAPI api = new CyberSourceAPI(apiHost, apiPort);
+
         
         log.info(action);
         if (action.equals("ClearOrder")){

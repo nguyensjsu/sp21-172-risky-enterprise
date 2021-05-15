@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel = "stylesheet" href = "style.css">
+    <title>Cashier App: Hot Coffee</title>
+</head>
+
+<a href = "/">
+    <p> BACK</p>
+</a>
+
+<body>
+    <h1> Hot Coffee </h1> <br>
+    <br>
+    <h2> Americanos </h2> <hr> <br> <br>
+    <form name="form" th:object="${command}" method="post">
+        <div class = "space"> 
+            <div class = "fixed" style="padding: 40px;">
+                <form>
+                    <h2>Size Options:</h2>
+                    <select class="select" id="size" name="size" th:field="*{size}">
+                        <option value="SMALL">Tall</option>
+                        <option value="MEDIUM">Grande</option>
+                        <option value="LARGE">Venti</option>
+                    </select>
+                    <br> <br> <br>
+                    <h2>Drink options:</h2>
+                    <select class="select" id="milk" name="milk" th:field="*{milk}">
+                        <option value="WHOLE_MILK">Whole Milk</option>
+                        <option value="REDUCED_FAT">Nonfat Milk</option>
+                        <option value="ALMOND_MILK">Almond Milk</option>
+                        <option value="SOY_MILK">Soy Milk</option>
+                    </select>
+                <br> <br> <br>
+                <input type="submit" name="event" id="btnSubmitOrder" value="Submit Order" style="float: right;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/HotCoffee.PNG" width = "140" height="125" > 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "caffeAmericano" value = "CAFFEAMERICANO" th:field="*{drink}">
+                <Label for ="caffeAmericano">Caffe Americano</Label>
+            </div>
+        </div>
+        <h2>Brewed Coffees</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "blondeRoast" value = "BLONDEROAST" th:field="*{drink}">
+                <Label for ="blondeRoast">Blonde Roast</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/CaffeMisto.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "caffemisto" value = "CAFFEMISTO" th:field="*{drink}">
+                <Label for ="caffemisto">Caffe Misto</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "pikePlaceRoast" value = "PIKEPLACEROAST" th:field="*{drink}">
+                <Label for ="pikePlaceRoast">Pike Place Roast</Label>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/BlondeRoast.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "decafPikePlaceRoast" value = "DECAFPIKEPLACEROAST" th:field="*{drink}">
+                <Label for ="decafPikePlaceRoast">Decaf Pike Place Roast</Label>
+            </div>
+        </div>
+        <h2>Cappuccinos</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/Cappuccino.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "cappuccino" value = "CAPPUCCINO" th:field="*{drink}">
+                <Label for ="cappuccino">Cappuccino</Label>
+            </div>
+        </div>
+        <h2>Espresso Shots</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/Espresso.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "espresso" value = "ESPRESSO" th:field="*{drink}">
+                <Label for ="espresso">Espresso</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/EspressoPanna.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "espressoConPanna" value = "ESPRESSOCONPANNA" th:field="*{drink}">
+                <Label for ="espressoConPanna">Espresso Con Panna</Label>
+            </div>
+        </div>
+        <h2>Flat Whites</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/FlatWhite.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "flatWhite" value = "FLATWHITE" th:field="*{drink}">
+                <Label for ="flatWhite">Flat White</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/HoneyFlat.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "honeyAlmondmilkFlatWhite" value = "HONEYALMONDMILKFLATWHITE" th:field="*{drink}">
+                <Label for ="honeyAlmondmilkFlatWhite">Honey Almondmilk Flat White</Label>
+            </div>
+        </div>
+        <h2>Lattes</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotTea/HotTea.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "pistachio" value = "PISTACHIO" th:field="*{drink}">
+                <Label for ="pistachio">Pistachio</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/CaffeLatte.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "caffeLatte" value = "CAFFELATTE" th:field="*{drink}">
+                <Label for ="caffeLatte">Caffe Latte</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/CinnamonLatte.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "cinnamonDolceLatte" value = "CINNAMONDOLCELATTE" th:field="*{drink}">
+                <Label for ="cinnamonDolceLatte">Cinnamon Dolce Latte</Label>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "reserveLatte" value = "RESERVELATTE" th:field="*{drink}">
+                <Label for ="reserveLatte">Reserve Latte</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "reserveHazelnutBiancoLatte" value = "RESERVEHAZELNUTBIANCOLATTE" th:field="*{drink}">
+                <Label for ="reserveHazelnutBiancoLatte">Reserve Hazelnut Bianco Latte</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/CaffeLatte.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "blondeVanillaLatte" value = "BLONDEVANILLALATTE" th:field="*{drink}">
+                <Label for ="blondeVanillaLatte">Blonde Vanilla Latte</Label>
+            </div>
+        </div>
+        <h2>Macchiatos</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/CaramelMacchiato.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "carmelMacchiato" value = "CARAMELMACCHIATO" th:field="*{drink}">
+                <Label for ="carmelMacchiato">Caramel Macchiato</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/EspressoMacchiato.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "espressoMacchiato" value = "ESPRESSOMACCHIATO" th:field="*{drink}">
+                <Label for ="espressoMacchiato">Espresso Macchiato</Label>
+            </div>
+        </div>
+        <h2>Mochas</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotCoffee/CaffeMocha.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "caffeMocha" value = "CAFFEMOCHA" th:field="*{drink}">
+                <Label for ="caffeMocha">Caffe Mocha</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/StarbucksLatte.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "darkChocolateMocha" value = "DARKCHOCOLATEMOCHA" th:field="*{drink}">
+                <Label for ="darkChocolateMocha">Dark Chocolate Mocha</Label>
+            </div>
+            <div class="column">
+                <img src = "HotCoffee/WhiteChocoalteMocha.PNG" width="140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "whiteChocolateMocha" value = "WHITECHOCOLATEMOCHA" th:field="*{drink}">
+                <Label for ="whiteChocolateMocha"></Label>White Chocolate Mocha</Label>
+            </div>
+        </div>
+        </form>
+    </form>
+</body>
+
+</html>

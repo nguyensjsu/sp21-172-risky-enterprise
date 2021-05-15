@@ -14,10 +14,26 @@ import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import lombok.extern.slf4j.Slf4j;
 
+
+
 @Slf4j
 public class CyberSourceAPI {
 
+    
+
     private static String APIKEY = "";
+    
+
+    private String apiHost;
+    private String apiPort;
+
+    public CyberSourceAPI(String apiHost, String apiPort){
+        this.apiHost = "http://"+ apiHost;
+        this.apiPort = apiPort;
+
+        System.out.print("----->" + this.apiHost);
+    }
+    
 
     private final String USER_AGENT = "Mozilla/5.0";
     public static String postRequestTarget = "REQUEST_TARGET_PALCEHOLDER";
@@ -32,15 +48,15 @@ public class CyberSourceAPI {
         if (!action.equals("")){
             System.out.println("Requesting Orders");
             payload = "{\n}";
-            log.info("https://localhost:80/" + resource);
-            String res = sendGet("http://localhost:80/" + resource, action) ;
+            log.info(apiHost + ":" + apiPort + "/" + resource);
+            String res = sendGet(apiHost + ":" + apiPort + "/" +  resource, action) ;
             response.reply = res;
         }
         else{
             payload = "{\n\"drink\": \"" + req.getDrink() + "\",\n\"milk\": \"" + req.getMilk() +
             "\",\n\"size\": \"" + req.getSize() + "\"\n}";
-            log.info("https://localhost:80/" + resource);
-            PostResponse res = sendPost("http://localhost:80/" + resource) ;
+            log.info(apiHost + ":" + apiPort + "/"  + resource);
+            PostResponse res = sendPost(apiHost + ":" + apiPort + "/"  + resource) ;
             response.code = res.code;
         
             if ( res.exception != null ) {
@@ -66,7 +82,6 @@ public class CyberSourceAPI {
 
         HttpURLConnection con = null ;
         int responseCode = 0 ;
-        String requestHost = "localhost";
 
         try {
             /* HTTP connection */
@@ -76,7 +91,7 @@ public class CyberSourceAPI {
             /* Add Request Header
              * "Host" Name of the host to send the request to.
              */
-            con.setRequestProperty("Host", requestHost);
+            con.setRequestProperty("Host", apiHost);
 
             /* HTTP Method POST */
             con.setRequestMethod("POST");
@@ -163,7 +178,7 @@ public class CyberSourceAPI {
         /* Add Request Header
          * "Host" Host to send the request to.
          */
-        con.setRequestProperty("Host", "localhost");
+        con.setRequestProperty("Host", apiHost);
 
         if (action.equals("ClearOrder")){
             /* HTTP Method DELETE */

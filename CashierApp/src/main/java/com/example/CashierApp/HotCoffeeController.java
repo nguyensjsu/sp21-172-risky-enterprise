@@ -12,12 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
+
+
 @Slf4j
 @Controller
 @RequestMapping("/hotcoffee")
 public class HotCoffeeController {
 
-    private CyberSourceAPI api = new CyberSourceAPI();
+    @Value("${orderprocessing.apihost}")private String apiHost;
+    @Value("${orderprocessing.apiport}")private String apiPort;
+
 
     @GetMapping
     public String getAction(@ModelAttribute("command") Order command, Model model) {
@@ -29,6 +34,8 @@ public class HotCoffeeController {
     @PostMapping
     public String postAction(@Valid @ModelAttribute("command") Order command,
         Errors errors, Model model, HttpServletRequest request) throws Exception {
+        CyberSourceAPI api = new CyberSourceAPI(apiHost, apiPort);
+
         log.info(command.getMilk());
         log.info(command.getSize());
         log.info(command.getDrink());
