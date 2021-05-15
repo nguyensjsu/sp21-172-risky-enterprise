@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <form name="form" th:object="${command}" method="post" action="">
     <h1> Menu </h1>
     <br>
     <br>
@@ -19,7 +20,7 @@
     <div class="row">
         <div class="column">
             <a href = "/hotcoffee">
-                <img src = "HotCoffee/HotCoffee.PNG" name = "action" value = "hot coffee"> 
+                <img src = "HotCoffee/HotCoffee.PNG"> 
             </a>
         </div>
         <div class="smallcolumn">
@@ -51,14 +52,22 @@
         </div>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br>
     <hr>
-    <br>
-    <br>
+    <br><br>
     <h1>Customer Order: </h1>
-    <input type="submit" name="event" id="btnClearOrder" value="Clear Order" style="float: center;">
+    <span th:text="${message}" ></span>
+    <br><br>
+    <input type="submit" name="action" id="btnClearOrder" value="ClearOrder" style="float: center;">
+    <br><br><hr>
+    <h1>Payment: </h1>
+    <br><br>
+    <h2>Card Number: </h2>
+    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" th:field= "*{cardnumber}">
+    <br><br>
+    <h2>Reward Number: </h2>
+    <input type="text" id="rewardnum" name="rewardnumber" placeholder="Reward Number" th:field= "*{rewardnumber}">
+    <br><br>
+    <input type="submit" name="action" id="btnPayOrder" value="PayOrder" style="float: center;">
+    </form>
 </body>

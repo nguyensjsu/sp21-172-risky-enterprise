@@ -19,21 +19,18 @@
                 <form>
                 <h2>Size Options:</h2>
                 <select class="select" id="size" name="size" th:field="*{size}">
-                    <option value="Tall">Tall</option>
-                    <option value="Grande">Grande</option>
-                    <option value="Venti">Venti</option>
+                    <option value="SMALL">Tall</option>
+                    <option value="MEDIUM">Grande</option>
+                    <option value="LARGE">Venti</option>
                 </select>
                 <br> <br> <br>
                 <h2>Drink options:</h2>
                 <select class="select" id="milk" name="milk" th:field="*{milk}">
-                    <option value="Whole Milk">Whole Milk</option>
-                    <option value="2% Milk">2% Milk</option>
-                    <option value="Nonfat Milk">Nonfat Milk</option>
-                    <option value="Almond Milk">Almond Milk</option>
-                    <option value="Soy Milk">Soy Milk</option>
+                    <option value="WHOLE_MILK">Whole Milk</option>
+                    <option value="REDUCED_FAT">Nonfat Milk</option>
+                    <option value="ALMOND_MILK">Almond Milk</option>
+                    <option value="SOY_MILK">Soy Milk</option>
                 </select>
-                <br> <br> <br>
-                <input type= "text" id="message" name = "message" placeholder="Additional Instructions" style="width: 300px; height: 200px;" th:field="*{message}">
                 <br> <br> <br>
                 <input type="submit" name="event" id="btnSubmitOrder" value="Submit Order" style="float: right;">
             </div>
@@ -46,22 +43,22 @@
                 <img src = "Frappuccino/Frappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "pistachioCoffeeFrappuccinoBlended" value = "PISTACHIO COFFEE FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="pistachioCoffeeFrappuccinoBlended">Pistachio Coffee Frappuccino Blended</Label>
+                <input type = "radio" id = "pistachioCoffeeFrappuccinoBlended" value = "PISTACHIOCOFFEEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="pistachioCoffeeFrappuccinoBlended">Pistachio Coffee Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/MochaFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "mochaCookieCrumbleFrappuccinoBlended" value = "MOCHA COOKIE CRUMBLE FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="mochaCookieCrumbleFrappuccinoBlended">Mocha Cookie Crumble Frappuccino Blended</Label>
+                <input type = "radio" id = "mochaCookieCrumbleFrappuccinoBlended" value = "MOCHACOOKIECRUMBLEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="mochaCookieCrumbleFrappuccinoBlended">Mocha Cookie Crumble Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/CaramelRibbonFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "caramelRibbonCrunchFrappuccinoBlended" value = "CARAMEL RIBBON CRUNCH FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="caramelRibbonCrunchFrappuccinoBlended">Caramel Ribbon Crunch Frappuccino Blended</Label>
+                <input type = "radio" id = "caramelRibbonCrunchFrappuccinoBlended" value = "CARAMELRIBBONCRUNCHFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="caramelRibbonCrunchFrappuccinoBlended">Caramel Ribbon Crunch Frappuccino Blended Beverage</Label>
             </div>
         </div>
         <br>
@@ -70,22 +67,22 @@
                 <img src = "Frappuccino/EspressoFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "espressoFrappuccinoBlended" value = "ESPRESSO FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="espressoFrappuccinoBlended">Espresso Frappuccino Blended</Label>
+                <input type = "radio" id = "espressoFrappuccinoBlended" value = "ESPRESSOFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="espressoFrappuccinoBlended">Espresso Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/CafeVanillaFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "caffeVanillaFrappuccinoBlended" value = "CAFFE VANILLA FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="caffeVanillaFrappuccinoBlended">Caffe Vanilla Frappuccino Blended</Label>
+                <input type = "radio" id = "caffeVanillaFrappuccinoBlended" value = "CAFFEVANILLAFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="caffeVanillaFrappuccinoBlended">Caffe Vanilla Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/CaramelFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "caramelFrappuccinoBlended" value = "CARAMEL FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="caramelFrappuccinoBlended">Caramel Frappuccino Blended</Label>
+                <input type = "radio" id = "caramelFrappuccinoBlended" value = "CARAMELFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="caramelFrappuccinoBlended">Caramel Frappuccino Blended Beverage</Label>
             </div>
         </div>
         <br>
@@ -94,22 +91,22 @@
                 <img src = "Frappuccino/EspressoFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "coffeeFrappuccinoBlended" value = "COFFEE FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="coffeeFrappuccinoBlended">Coffee Frappuccino Blended</Label>
+                <input type = "radio" id = "coffeeFrappuccinoBlended" value = "COFFEEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="coffeeFrappuccinoBlended">Coffee Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/MochaBlendedFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "mochaFrappuccinoBlended" value = "MOCHA FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="mochaFrappuccinoBlended">Mocha Frappuccino Blended</Label>
+                <input type = "radio" id = "mochaFrappuccinoBlended" value = "MOCHAFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="mochaFrappuccinoBlended">Mocha Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/ChocolateFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "javaChipFrappuccinoBlended" value = "JAVA CHIP FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="javaChipFrappuccinoBlended">Java Chip Frappuccino Blended</Label>
+                <input type = "radio" id = "javaChipFrappuccinoBlended" value = "JAVACHIPFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="javaChipFrappuccinoBlended">Java Chip Frappuccino Blended Beverage</Label>
             </div>
         </div>
         <br>
@@ -118,8 +115,8 @@
                 <img src = "Frappuccino/CafeVanillaFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "whiteChocolateMochaFrappuccinoBlended" value = "WHITE CHOCOLATE MOCHA FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="whiteChocolateMochaFrappuccinoBlended">White Chocolate Mocha Frappuccino Blended</Label>
+                <input type = "radio" id = "whiteChocolateMochaFrappuccinoBlended" value = "WHITECHOCOLATEMOCHAFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="whiteChocolateMochaFrappuccinoBlended">White Chocolate Mocha Frappuccino Blended Beverage</Label>
             </div>
         </div>
         <h2>Creme Frappuccino</h2>
@@ -130,22 +127,22 @@
                 <img src = "Frappuccino/PistachioFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "pistachioCremeFrappuccinoBlended" value = "PISTACHIO CREME FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="pistachioCremeFrappuccinoBlended">Pistachio Creme Frappuccino Blended</Label>
+                <input type = "radio" id = "pistachioCremeFrappuccinoBlended" value = "PISTACHIOCREMEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="pistachioCremeFrappuccinoBlended">Pistachio Creme Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/ChocolateFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "chococlateCookieCrumbleCremeFrappuccino" value = "CHOCOLATE COOKIE CRUMBLE CREME FRAPPUCCINO" th:field="*{drink}">
+                <input type = "radio" id = "chococlateCookieCrumbleCremeFrappuccino" value = "CHOCOLATECOOKIECRUMBLECREMEFRAPPUCCINO" th:field="*{drink}">
                 <Label for ="chococlateCookieCrumbleCremeFrappuccino">Chococlate Cookie Crumble Creme Frappuccino</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/CaramelRibbonCreme.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "caramelRibbonCrunchCremeFrappuccinoBlended" value = "CARAMEL RIBBON CRUNCH CREME FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="caramelRibbonCrunchCremeFrappuccinoBlended">Caramel Ribbon Crunch Creme Frappuccino Blended</Label>
+                <input type = "radio" id = "caramelRibbonCrunchCremeFrappuccinoBlended" value = "CARAMELRIBBONCRUNCHCREMEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="caramelRibbonCrunchCremeFrappuccinoBlended">Caramel Ribbon Crunch Creme Frappuccino Blended Beverage</Label>
             </div>
         </div>
         <br>
@@ -154,21 +151,21 @@
                 <img src = "Frappuccino/StrawberryFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "strawberryCremeFrappuccinoBlended" value = "STRAWBERRY CREME FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="strawberryCremeFrappuccinoBlended">Strawberry Creme Frappuccino Blended</Label>
+                <input type = "radio" id = "strawberryCremeFrappuccinoBlended" value = "STRAWBERRYCREMEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="strawberryCremeFrappuccinoBlended">Strawberry Creme Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/ChaiCremeFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "chaiCremeFrappuccinoBlended" value = "CHAI CREME FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="chaiCremeFrappuccinoBlended">Chai Creme Frappuccino Blended</Label>
+                <input type = "radio" id = "chaiCremeFrappuccinoBlended" value = "CHAICREMEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="chaiCremeFrappuccinoBlended">Chai Creme Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/ChocolateFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "doubleChocolateCookieCrumbleCremeFrappuccino" value = "DOUBLE CHOCOLATE COOKIE CRUMBLE CREME FRAPPUCCINO" th:field="*{drink}">
+                <input type = "radio" id = "doubleChocolateCookieCrumbleCremeFrappuccino" value = "DOUBLECHOCOLATECOOKIECRUMBLECREMEFRAPPUCCINO" th:field="*{drink}">
                 <Label for ="doubleChocolateCookieCrumbleCremeFrappuccino">Double Chocolate Cookie Crumble Creme Frappuccino</Label>
             </div>
         </div>
@@ -178,22 +175,22 @@
                 <img src = "Frappuccino/MatchaFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "matchaCremeFrappuccinoBlended" value = "MATCHA CREME FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="matchaCremeFrappuccinoBlended">Matcha Creme Frappuccino Blended</Label>
+                <input type = "radio" id = "matchaCremeFrappuccinoBlended" value = "MATCHACREMEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="matchaCremeFrappuccinoBlended">Matcha Creme Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/VanillaFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "vanillaBeanCremeFrappuccinoBlended" value = "VANILLA BEAN CREME FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="vanillaBeanCremeFrappuccinoBlended">Vanilla Bean Creme Frappuccino Blended</Label>
+                <input type = "radio" id = "vanillaBeanCremeFrappuccinoBlended" value = "VANILLABEANCREMEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="vanillaBeanCremeFrappuccinoBlended">Vanilla Bean Creme Frappuccino Blended Beverage</Label>
             </div>
             <div class="column">
                 <img src = "Frappuccino/VanillaFrappuccino.PNG" width = "140" height="125"> 
             </div>
             <div class="smallcolumn">
-                <input type = "radio" id = "whiteChocolateCremeFrappuccinoBlended" value = "WHITE CHOCOLATE CREME FRAPPUCCINO BLENDED" th:field="*{drink}">
-                <Label for ="whiteChocolateCremeFrappuccinoBlended">White Chocolate Creme Frappuccino Blended</Label>
+                <input type = "radio" id = "whiteChocolateCremeFrappuccinoBlended" value = "WHITECHOCOLATECREMEFRAPPUCCINOBLENDEDBEVERAGE" th:field="*{drink}">
+                <Label for ="whiteChocolateCremeFrappuccinoBlended">White Chocolate Creme Frappuccino Blended Beverage</Label>
             </div>
         </div>
         </form>
