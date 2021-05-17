@@ -39,6 +39,10 @@ import lombok.Setter;
 @RequestMapping("/")
 public class appController {
 
+    private String tmpCusName;
+    private String tmpReward;
+
+
     officeModel office = new officeModel();
     Login login = new Login();
 
@@ -53,22 +57,13 @@ public class appController {
     public String getOfficeAction (@ModelAttribute("command") Customer command, Model model) {
         
         log.info("get office page");
-
-        String customerId = command.getCustomerId();
-        if (office.checkCustomerId(customerId)){
-
-            command.setReward(office.reward());
-            command.setReward(command.getNewReward());
-
-            return "officePage";
-        } else {
-            return "officePage";
-        }
+        
+        return "officePage";
+        
     }
     
     @PostMapping 
-    public String postAction(@Valid @ModelAttribute("command") Cashier command,
-                  Error errors, Model model, HttpServletRequest request) {
+    public String postAction(@Valid @ModelAttribute("command") Cashier command) {
         
         log.info("check login");
                
@@ -80,7 +75,7 @@ public class appController {
             office.setRegistered(true);
             office.setCashierId(id);
 
-            return "officePage";
+            return "redirect:/officePage";
         } else {
             return "cashierLogin";
         }      
@@ -90,9 +85,7 @@ public class appController {
     
 
     @PostMapping ("/officePage") 
-    public String officeAction(@Valid @ModelAttribute("command") Customer command,
-        @RequestParam(value="action", required=true) String action,
-        Error errors, Model model, HttpServletRequest request) throws Exception {
+    public String officeAction(@Valid @ModelAttribute("command") Customer command) {
         
         log.info("check customerId");    
 

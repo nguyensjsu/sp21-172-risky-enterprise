@@ -60,7 +60,7 @@
     <div class="w3-container" style="margin-top:80px" id="showcase">
       <h1 class="w3-jumbo w3-text-green"><b>Starbucks</b></h1>
       <p class="w3-text-green">Office Dashboard</p>
-      <p class="w3-text-black" id="cashierId">Hi</p>
+      <p class="w3-text-black" id="cashierId">Hi, Cashier! </p>
       
     </div>
 
@@ -88,8 +88,9 @@
       <hr style="width:60px;border:2px solid" class="w3-round w3-text-green">
       <table style="width:80%">
         <tr>
-          <th>Customer Name: ####</th>
-          <th>Current Reward: XX</th>
+          <th>Customer ID:</th><th th:text="*{customerId}" ></th>
+          
+          <th>Current Reward:</th><th th:text="*{reward}" ></th>
           <th><input class="w3-input w3-border" type="text" name="newReward" placeholder="new reward" id= "newReward" th:field="*{newReward}"></th>
           <th><input type="submit" name="action" id="process-payment" value="Change" class="btn"></th>
         </tr>
@@ -101,29 +102,6 @@
 
   <!-- End page content -->
   </div>
-
-
-
-  <script>
-    // Script to open and close sidebar
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("myOverlay").style.display = "block";
-    }
-
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("myOverlay").style.display = "none";
-    }
-
-    // Modal Image Gallery
-    function onClick(element) {
-      document.getElementById("img01").src = element.src;
-      document.getElementById("modal01").style.display = "block";
-      var captionText = document.getElementById("caption");
-      captionText.innerHTML = element.alt;
-    }
-  </script>
 
 </body>
 

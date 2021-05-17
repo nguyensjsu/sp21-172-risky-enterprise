@@ -5,10 +5,16 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class Customer {
-    private String customerId;
-    private String reward;
+    private String customerId = "default";
+    private String reward = "88";
     private String newReward;
     
 
     public String getCustomerId(){return customerId;}
+
+    public String getNewReward(){ 
+        
+        reward = newReward;
+        return newReward;
+    }
 }
