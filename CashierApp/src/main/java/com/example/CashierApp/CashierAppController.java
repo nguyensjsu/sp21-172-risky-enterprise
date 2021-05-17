@@ -56,7 +56,7 @@ public class CashierAppController {
         return "order" ;
     }
 
-    @PostMapping
+    @PostMapping //CHANGE
     public String postAction(@Valid @ModelAttribute("command") Order command,
         @RequestParam(value="action", required=true) String action,
         Errors errors, Model model, HttpServletRequest request) throws Exception {
@@ -73,13 +73,26 @@ public class CashierAppController {
                 OrderResponse response = new OrderResponse();
                 response = api.authorize(command, "order/register/5012349/pay/reward/" + command.getRewardnumber(), action);
                 System.out.println("\n\nAuth Response: " + response.toJson());
-                message = "No Orders";
+                OrderResponse msgresponse = new OrderResponse();
+                msgresponse = api.authorize(command, "order/register/5012349", "GetOrder");
+                System.out.println("\n\nAuth Response: " + msgresponse.toJson());
+
+                message = msgresponse.reply;
+                if (message.equals("[]"))
+                    message = "No Orders Placed";
             }
             else{
                 OrderResponse response = new OrderResponse();
                 response = api.authorize(command, "order/register/5012349/pay/card/" + command.getCardnumber(), action);
                 System.out.println("\n\nAuth Response: " + response.toJson());
                 message = "No Orders";
+                OrderResponse msgresponse = new OrderResponse();
+                msgresponse = api.authorize(command, "order/register/5012349", "GetOrder");
+                System.out.println("\n\nAuth Response: " + msgresponse.toJson());
+
+                message = msgresponse.reply;
+                if (message.equals("[]"))
+                    message = "No Orders Placed";
             }
         }
 
