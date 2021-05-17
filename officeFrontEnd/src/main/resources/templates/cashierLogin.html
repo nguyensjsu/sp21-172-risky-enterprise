@@ -38,14 +38,14 @@
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-white w3-collapse w3-top w3-large w3-padding"
     style="z-index:3;width:200px;font-weight:bold;" id="mySidebar"><br>
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft"
+    <a class="w3-button w3-hide-large w3-display-topleft"
       style="width:100%;font-size:22px">Close Menu</a>
     <div class="w3-container">
-      <h3 class="w3-padding-64"><a href="#" id="logo"><img src="../static/images/starbucks_logo.png"></a></h3>
+      <h3 class="w3-padding-64"><a id="logo"><img src="images/starbucks_logo.png"></a></h3>
     </div>
     <div class="w3-bar-block w3-text-gray">
 
-      <a href="#log" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cashier Login</a>
+      <a class="w3-bar-item w3-button w3-hover-white">Cashier Login</a>
       
     </div>
   </nav>
@@ -63,20 +63,20 @@
     </div>
 
     <!-- Log -->
-    <div class="w3-container" id="log" style="margin-top:75px" th:object="${command}" method="post">
+    <div class="w3-container" style="margin-top:75px" >
       <h1 class="w3-xlarge w3-text-green"><b>Cashier Login</b></h1>
 
-      <form action="/action_page.php" target="_blank">
+      <form th:object="${command}">
         <div class="w3-section">
           <label>Cashier ID</label>
-          <input class="w3-input w3-border" type="text" name="Name" th:field ="${cashierId}" required>
+          <input class="w3-input w3-border" type="text" name="cashierId" id="cashierId" th:field ="*{cashierId}" >
         </div>
         <div class="w3-section">
           <label>Password</label>
-          <input class="w3-input w3-border" type="text" name="Password" th:field ="${cashierPassword}" required>
+          <input class="w3-input w3-border" type="password" name="cashierPassword" id="cashierPassword" th:field ="*{cashierPassword}" >
         </div>
-
-        <button type="submit" class="w3-button w3-block w3-padding-large w3-green w3-margin-bottom" name="login">Login</button>
+        
+        <input type="submit" class="w3-button w3-block w3-padding-large w3-green w3-margin-bottom" id="loginAction" name="action" value="login">
       </form>
     </div>
 
@@ -85,28 +85,6 @@
   <!-- End page content -->
   </div>
 
-
-
-  <script>
-    // Script to open and close sidebar
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("myOverlay").style.display = "block";
-    }
-
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("myOverlay").style.display = "none";
-    }
-
-    // Modal Image Gallery
-    function onClick(element) {
-      document.getElementById("img01").src = element.src;
-      document.getElementById("modal01").style.display = "block";
-      var captionText = document.getElementById("caption");
-      captionText.innerHTML = element.alt;
-    }
-  </script>
 
 </body>
 

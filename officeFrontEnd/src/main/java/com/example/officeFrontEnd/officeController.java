@@ -36,35 +36,41 @@ import lombok.Setter;
 
 @Slf4j
 @Controller
-@RequestMapping("/cashierLogin")
+@RequestMapping("/")
 public class officeController {
 
     officeModel office = new officeModel();
 
     @GetMapping
-    public String getAction (@ModelAttribute("command") Cashier command, Model model) throws Exception {
-        
-        
-        if(office.isRegistered()){
-            return "officeFrontend";
-        } else {
-            return "cashierLogin";
-        } 
+    public String getAction (@ModelAttribute("command") Cashier command, Model model) {
+        log.info("start");
+       return "cashierLogin";
     }
 
-    @GetMapping("/officeFrontend") String getOfficeinfo (@ModelAttribute("command") Cashier command, Model model) throws Exception {
 
-        return "officeFrontend";
-    }
-
-    @PostMapping ("/cashierLogin") String postAction(@Valid @ModelAttribute("command") Cashier command,
-         @RequestParam(value="action", required=true) String action, 
-         Error errors, Model model, HttpServletRequest request) throws Exception {
-
+    @PostMapping ("/?cashierId=&cashierPassword=&action=login")
+    public String postAction(@Valid @ModelAttribute("command") Cashier command,
+                  Error errors, Model model, HttpServletRequest request) {
+        
+        log.info("check login");
+               
         Login login = new Login();
         String id = command.getCashierId();
         String password = command.getCashierPassword();
         
+        return "cashierLogin";
+
+    }; 
+/*
+    @GetMapping("/officePage") 
+    public String getOfficeinfo (@ModelAttribute("command") Cashier command, Model model) throws Exception {
+
+        return "officePage";
+    }
+    */
+    
+
+/*
         if(login.check(id, password)){
             // check sucessful  
             office.setRegistered(true);
@@ -73,11 +79,14 @@ public class officeController {
             // check unsucessful
             return "cashierLogin";
         }    
+        */
+        
 
-    }; 
+   
 
-
-    @PostMapping ("/officeFrontend") String officeAction(@Valid @ModelAttribute("command") FrontEndEntity command,
+/*
+    @PostMapping ("/officePage") 
+    public String officeAction(@Valid @ModelAttribute("command") FrontEndEntity command,
         @RequestParam(value="action", required=true) String action,
         Error errors, Model model, HttpServletRequest request) throws Exception {
             
@@ -86,12 +95,12 @@ public class officeController {
         if (office.checkCustomerId(customerId)){
 
             office.setReward(command.getNewReward());
-            return "officeFrontend"; 
+            return "officePage"; 
         }else{
-            return "officeFrontend";
+            return "officePage";
         }
         
     };
-
+*/
     
 }
