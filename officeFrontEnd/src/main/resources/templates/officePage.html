@@ -54,30 +54,31 @@
 
 
   <!-- !PAGE CONTENT! -->
-  <div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-main" style="margin-left:340px;margin-right:40px"  >
 
     <!-- Header -->
     <div class="w3-container" style="margin-top:80px" id="showcase">
       <h1 class="w3-jumbo w3-text-green"><b>Starbucks</b></h1>
       <p class="w3-text-green">Office Dashboard</p>
-      <p class="w3-text-black">Hi, Cashier name</p>
+      <p class="w3-text-black" id="cashierId">Hi</p>
+      
     </div>
 
-  
+    <form th:object="${command}" method="post" action="">
 
     <!-- Customer ID -->
     <div class="w3-container" id="custId" style="margin-top:75px">
       <h1 class="w3-xlarge w3-text-green"><b>Search For Customer</b></h1>
 
-      <form action="/action_page.php" target="_blank">
+      
         <div class="w3-section">
           <label>Customer ID</label>
-          <input class="w3-input w3-border" type="text" name="Name" required>
+          <input class="w3-input w3-border" type="text" name="customerId" id="customerId" th:field="*{customerId}">
         </div>
         
         <button type="submit"
           class="w3-button w3-block w3-padding-large w3-green w3-margin-bottom">Search Customer</button>        
-      </form>
+      
     </div>
 
 
@@ -89,12 +90,14 @@
         <tr>
           <th>Customer Name: ####</th>
           <th>Current Reward: XX</th>
-          <th><input class="w3-input w3-border" type="text" name="Name" placeholder="new reward" required></th>
+          <th><input class="w3-input w3-border" type="text" name="newReward" placeholder="new reward" id= "newReward" th:field="*{newReward}"></th>
           <th><input type="submit" name="action" id="process-payment" value="Change" class="btn"></th>
         </tr>
       </table>
 
     </div>
+
+    </form>
 
   <!-- End page content -->
   </div>

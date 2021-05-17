@@ -37,70 +37,76 @@ import lombok.Setter;
 @Slf4j
 @Controller
 @RequestMapping("/")
-public class officeController {
+public class appController {
 
     officeModel office = new officeModel();
+    Login login = new Login();
 
-    @GetMapping
+    @GetMapping 
     public String getAction (@ModelAttribute("command") Cashier command, Model model) {
         log.info("start");
        return "cashierLogin";
     }
 
 
-    @PostMapping ("/?cashierId=&cashierPassword=&action=login")
+    @GetMapping ("/officePage")
+    public String getOfficeAction (@ModelAttribute("command") Customer command, Model model) {
+        
+        log.info("get office page");
+
+        String customerId = command.getCustomerId();
+        if (office.checkCustomerId(customerId)){
+
+            command.setReward(office.reward());
+            command.setReward(command.getNewReward());
+
+            return "officePage";
+        } else {
+            return "officePage";
+        }
+    }
+    
+    @PostMapping 
     public String postAction(@Valid @ModelAttribute("command") Cashier command,
                   Error errors, Model model, HttpServletRequest request) {
         
         log.info("check login");
                
-        Login login = new Login();
         String id = command.getCashierId();
         String password = command.getCashierPassword();
         
-        return "cashierLogin";
+        if (login.check(id, password)){
+
+            office.setRegistered(true);
+            office.setCashierId(id);
+
+            return "officePage";
+        } else {
+            return "cashierLogin";
+        }      
 
     }; 
-/*
-    @GetMapping("/officePage") 
-    public String getOfficeinfo (@ModelAttribute("command") Cashier command, Model model) throws Exception {
 
-        return "officePage";
-    }
-    */
     
 
-/*
-        if(login.check(id, password)){
-            // check sucessful  
-            office.setRegistered(true);
-            return "officeFrontend";
-        } else {
-            // check unsucessful
-            return "cashierLogin";
-        }    
-        */
-        
-
-   
-
-/*
     @PostMapping ("/officePage") 
-    public String officeAction(@Valid @ModelAttribute("command") FrontEndEntity command,
+    public String officeAction(@Valid @ModelAttribute("command") Customer command,
         @RequestParam(value="action", required=true) String action,
         Error errors, Model model, HttpServletRequest request) throws Exception {
-            
+        
+        log.info("check customerId");    
+
         String customerId = command.getCustomerId();
+        
         
         if (office.checkCustomerId(customerId)){
 
             office.setReward(command.getNewReward());
-            return "officePage"; 
-        }else{
-            return "officePage";
         }
+
+        return "officePage";
         
     };
-*/
+
     
 }

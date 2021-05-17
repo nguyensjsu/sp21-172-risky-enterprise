@@ -5,13 +5,21 @@ package com.example.officeFrontEnd;
 
 public class officeModel {
     private boolean registered;
+    private String casierId;
     private String reward;
     private String customerId;
 
     public officeModel () {
         registered = false;
         reward = "";
-        customerId = "";
+        customerId = "111";
+    }
+    public void setCashierId (String cashierId){
+        this.casierId = cashierId;
+    }
+
+    public String getCashierId() {
+        return casierId;
     }
 
     public void setRegistered(boolean b){
@@ -32,9 +40,11 @@ public class officeModel {
 
     public boolean checkCustomerId(String customerId){
         // if check customerid passed 
-            this.customerId = customerId;
+        if(customerId.equals(this.customerId)){
+            return true;
+        }
         // reward = customerid.reward
-        return true;
+        return false;
 
         //else return false;
     }

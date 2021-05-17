@@ -1,11 +1,14 @@
 package com.example.officeFrontEnd;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@AllArgsConstructor
-public class FrontEndEntity {
+@RequiredArgsConstructor
+public class Customer {
     private String customerId;
+    private String reward;
     private String newReward;
+    
+
+    public String getCustomerId(){return customerId;}
 }
