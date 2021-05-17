@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentprocessing-deployment
+  labels:
+    app: paymentprocessing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paymentprocessing
+  template:
+    metadata:
+      labels:
+        app: paymentprocessing
+    spec:
+      containers:
+      - name: opaymentprocessing
+        image: freakydeveloper007/paymentprocessing:v1
+        ports:
+        - containerPort: 8080
+        env:
+          - name: MYSQL_HOST
+            value: mysql-service
+          - name: MYSQL_USER_NAME
+            valueFrom:
+              secretKeyRef:
+                  name: secret
+                  key: MYSQL_USER_NAME
+          - name: MYSQL_USER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                  name: secret
+                  key: MYSQL_USER_PASSWORD
+          - name: CYBER_MERCH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: CYBER_MERCH_KEY_ID
+          - name: CYBER_MERCH_KEY
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: CYBER_MERCH_KEY
+          - name: CYBER_MERCH_ID
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: CYBER_MERCH_ID
+          - name: CYBER_API_HOST
+            value: apitest.cybersource.com
+          
+        
+          

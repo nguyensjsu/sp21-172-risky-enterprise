@@ -1,0 +1,10 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "customer-front-ingress"
+  namespace: "default"
+spec:
+  backend:
+    serviceName: customerfront-service
+    servicePort: 80
+

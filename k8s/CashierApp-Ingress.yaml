@@ -1,0 +1,10 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "cashier-app-ingress"
+  namespace: "default"
+spec:
+  backend:
+    serviceName: cashierapp-service
+    servicePort: 80
+

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cashierapp-deployment
+  labels:
+    app: cashierapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cashierapp
+  template:
+    metadata:
+      labels:
+        app: cashierapp
+    spec:
+      containers:
+      - name: cashierapp
+        image: freakydeveloper007/cashierapp:v1       
+        ports:
+        - containerPort: 8080
+        env:
+          - name: ORDER_API_HOST
+            value: orderprocessing-service
+          - name: ORDER_API_PORT
+            value: "8080"
+            
+          

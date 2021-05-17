@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customerfront-deployment
+  labels:
+    app: customerfront
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customerfront
+  template:
+    metadata:
+      labels:
+        app: customerfront
+    spec:
+      containers:
+      - name: customerfront
+        image: freakydeveloper007/customerfront:v1
+        ports:
+        - containerPort: 8080
+        env:
+          - name: MYSQL_HOST
+            value: mysql-service
+          - name: MYSQL_USER_NAME
+            valueFrom:
+              secretKeyRef:
+                  name: secret
+                  key: MYSQL_USER_NAME
+          - name: MYSQL_USER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                  name: secret
+                  key: MYSQL_USER_PASSWORD
+          - name: PAYMENT_SERVER_PORT
+            value: "8080"
+          - name: PAYMENT_API_HOST
+            value: paymentprocessing-service
+          - name: PAYMENT_API_KEY
+            valueFrom:
+              secretKeyRef:
+                  name: secret
+                  key: PAYMENT_API_KEY
+
+            
+          
