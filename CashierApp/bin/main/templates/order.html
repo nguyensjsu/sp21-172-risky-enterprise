@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel = "stylesheet" href = "style.css">
+    <title>Cashier App</title>
+    <style>
+        hr {
+        width: 80%;
+        float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="form" th:object="${command}" method="post" action="">
+    <h1> Menu </h1>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="column">
+            <a href = "/hotcoffee">
+                <img src = "HotCoffee/HotCoffee.PNG"> 
+            </a>
+        </div>
+        <div class="smallcolumn">
+            <h2>Hot Coffee</h2>
+        </div>
+        <div class="column">
+            <a href = "/hottea">
+                <img src = "HotTea/HotTea.PNG"> 
+            </a>
+        </div>
+        <div class="smallcolumn">
+            <h2>Hot Teas</h2>
+        </div>
+        <div class="column">
+            <a href = "/hotdrinks">
+                <img src = "HotDrink/HotDrinks.PNG"> 
+            </a>
+        </div>
+        <div class="smallcolumn">
+            <h2>Hot Drinks</h2>
+        </div>
+        <div class="column">
+            <a href = "/frappuccino">
+                <img src = "Frappuccino/Frappuccino.PNG"> 
+            </a>
+        </div>
+        <div class="smallcolumn">
+            <h2>Frappuccino</h2>
+        </div>
+        </div>
+    </div>
+    <br><br><br><br><br>
+    <hr>
+    <br><br>
+    <h1>Customer Order: </h1>
+    <span th:text="${message}" ></span>
+    <br><br>
+    <input type="submit" name="action" id="btnClearOrder" value="ClearOrder" style="float: center;">
+    <br><br><hr>
+    <h1>Payment: </h1>
+    <br><br>
+    <h2>Card Number: </h2>
+    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" th:field= "*{cardnumber}">
+    <br><br>
+    <h2>Reward Number: </h2>
+    <input type="text" id="rewardnum" name="rewardnumber" placeholder="Reward Number" th:field= "*{rewardnumber}">
+    <br><br>
+    <input type="submit" name="action" id="btnPayOrder" value="PayOrder" style="float: center;">
+    </form>
+</body>

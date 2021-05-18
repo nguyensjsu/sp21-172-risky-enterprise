@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel = "stylesheet" href = "style.css">
+    <title>Cashier App: Hot Drinks</title>
+</head>
+
+<a href = "/">
+    <p> BACK</p>
+</a>
+
+<body>
+    <h1> Hot Drinks </h1>
+    <br>
+    <h2> Hot Chococlates </h2>
+    <form name="form" th:object="${command}" method="post">
+        <div class = "space"> 
+            <div class = "fixed" style="padding: 40px;">
+                <form>
+                    <h2>Size Options:</h2>
+                    <select class="select" id="size" name="size" th:field="*{size}">
+                        <option value="SMALL">Tall</option>
+                        <option value="MEDIUM">Grande</option>
+                        <option value="LARGE">Venti</option>
+                    </select>
+                    <br> <br> <br>
+                    <h2>Drink options:</h2>
+                    <select class="select" id="milk" name="milk" th:field="*{milk}">
+                        <option value="WHOLE_MILK">Whole Milk</option>
+                        <option value="REDUCED_FAT">Nonfat Milk</option>
+                        <option value="ALMOND_MILK">Almond Milk</option>
+                        <option value="SOY_MILK">Soy Milk</option>
+                    </select>
+                <br> <br> <br>
+                <input type="submit" name="event" id="btnSubmitOrder" value="Submit Order" style="float: right;">
+            </div>
+        </div>
+        <hr> 
+        <br>
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotDrink/HotDrinks.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "hotChcocolate" value = "HOTCHOCOLATE" th:field="*{drink}">
+                <Label for ="hotChcocolate">Hot Chcocolate</Label>
+            </div>
+            <div class="column">
+                <img src = "HotDrink/WhiteChocolate.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "whiteHotChcocolate" value = "WHITEHOTCHOCOLATE" th:field="*{drink}">
+                <Label for ="whiteHotChcocolate">White Hot Chcocolate</Label>
+            </div>
+        </div>
+        <h2> Juice </h2>
+        <hr> 
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotDrink/CaramelSpice.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "caramelAppleSpice" value = "CARAMELAPPLESPICE" th:field="*{drink}">
+                <Label for ="caramelAppleSpice">Caramel Apple Spice</Label>
+            </div>
+            <div class="column">
+                <img src = "HotDrink/AppleJuice.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "steamedAppleJuice" value = "STEAMEDAPPLEJUICE" th:field="*{drink}">
+                <Label for ="steamedAppleJuice">Steamed Apple Juice</Label>
+            </div>
+        </div>
+        <h2> Steamers </h2>
+        <hr> 
+        <br>
+        <div class="row">
+            <div class="column">
+                <img src = "HotDrink/PistachioCreme.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "pistachioCreme" value = "PISTACHIOCREME" th:field="*{drink}">
+                <Label for ="pistachioCreme">Pistachio Creme</Label>
+            </div>
+            <div class="column">
+                <img src = "HotDrink/CinnamonCreme.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "cinnamonDolceCreme" value = "CINNAMONDOLCECREME" th:field="*{drink}">
+                <Label for ="cinnamonDolceCreme">Cinnamon Dolce Creme</Label>
+            </div>
+            <div class="column">
+                <img src = "HotDrink/SteamedMilk.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "steamedMilk" value = "STEAMEDMILK" th:field="*{drink}">
+                <Label for ="steamedMilk">Steamed Milk</Label>
+            </div>
+        </div>
+        <br>
+        <div class = "row">
+            <div class="column">
+                <img src = "HotDrink/WhiteChocolate.PNG" width = "140" height="125"> 
+            </div>
+            <div class="smallcolumn">
+                <input type = "radio" id = "vanillaCreme" value = "VANILLACREME" th:field="*{drink}">
+                <Label for ="vanillaCreme">Vanilla Creme</Label>
+            </div>
+        </div>
+        </form>
+    </form>
+</body>
