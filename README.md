@@ -7,6 +7,13 @@
 
 1. Cashier's App
    - What features were implemented?
+      - Our Cashier Application uses our orderProcessing API and the cashier can place different types of drinks (coffee, hot drinks, tea, and frappuccino).
+      - The drinks would be saved in a database through our API call. 
+      - The cashier can also clear orders (clear order button in home page) and it would delete all the orders from the database. 
+      - Another feature the Cashier Application has is paying for the order either by credit card or rewards. 
+      - The console would receive feedback if the transaction is successful. 
+      - If the transaction is successful, the database would be cleared. 
+      - The cashier can also see what drinks are currently in the database to clarify what information was submitted through the API call.
 2. Backoffice Help Desk App
    - What features were implemented?
 3. Online Store

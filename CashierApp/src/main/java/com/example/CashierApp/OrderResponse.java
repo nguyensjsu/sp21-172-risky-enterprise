@@ -27,7 +27,7 @@ public class OrderResponse extends Payload {
                 response.id = jsonNode.get("id").asText() ;
                 response.status = jsonNode.get("status").asText() ;
                 response.code = Integer.parseInt(jsonNode.get("code").asText());
-                if ( !response.status.equals("READY_FOR_PAYMENT") ) {
+                if ( !response.status.equals("READY_FOR_PAYMENT") && !response.message.equals("{\"message\":\"FAILURE\"}") && !response.message.equals("{\"message\":\"SUCCESS\"}")) { //CHANGE
                     response.status = "ERROR" ;
                     response.reason = jsonNode.get("errorInformation").get("reason").asText() ;
                     response.message = jsonNode.get("errorInformation").get("message").asText() ;

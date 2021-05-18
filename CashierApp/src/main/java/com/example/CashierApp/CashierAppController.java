@@ -70,7 +70,6 @@ public class CashierAppController {
         
         CyberSourceAPI api = new CyberSourceAPI(apiHost, apiPort);
 
-        
         log.info(action);
         if (action.equals("ClearOrder")){
             OrderResponse response = new OrderResponse();
@@ -83,18 +82,30 @@ public class CashierAppController {
                 OrderResponse response = new OrderResponse();
                 response = api.authorize(command, "order/register/5012349/pay/reward/" + command.getRewardnumber(), action);
                 System.out.println("\n\nAuth Response: " + response.toJson());
-                message = "No Orders";
+                OrderResponse msgresponse = new OrderResponse();
+                msgresponse = api.authorize(command, "order/register/5012349", "GetOrder");
+                System.out.println("\n\nAuth Response: " + msgresponse.toJson());
+
+                message = msgresponse.reply;
+                if (message.equals("[]"))
+                    message = "No Orders Placed";
             }
             else{
                 OrderResponse response = new OrderResponse();
                 response = api.authorize(command, "order/register/5012349/pay/card/" + command.getCardnumber(), action);
                 System.out.println("\n\nAuth Response: " + response.toJson());
                 message = "No Orders";
+                OrderResponse msgresponse = new OrderResponse();
+                msgresponse = api.authorize(command, "order/register/5012349", "GetOrder");
+                System.out.println("\n\nAuth Response: " + msgresponse.toJson());
+
+                message = msgresponse.reply;
+                if (message.equals("[]"))
+                    message = "No Orders Placed";
             }
         }
 
         model.addAttribute("message", message);
         return "order";
-
     }
 }
