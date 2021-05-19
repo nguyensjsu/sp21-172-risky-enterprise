@@ -1,4 +1,4 @@
-package com.example.CustomerFrontEnd;
+package com.example.officeFrontEnd;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    private CustomerRepositoryUserDetailsService userDetailsService;
+    private EmployeeRepositoryUserDetailsService userDetailsService;
 
     
 
@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     http
         .authorizeRequests()
-        .antMatchers("/home")
+        .antMatchers("/officePage")
         .access("hasRole('ROLE_USER')")        
         .antMatchers("/", "/**").access("permitAll")
         .antMatchers("/h2-console/**").permitAll()        
@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .formLogin()
         .loginPage("/login")
-        .defaultSuccessUrl("/home", true)
+        .defaultSuccessUrl("/officePage", true)
 
         .and()
         .logout()
@@ -75,3 +75,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 }
+
