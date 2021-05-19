@@ -122,20 +122,26 @@ Here is the final design dicussion and constraints:
    > Final design of Order Processing Request/Response
    - GET /ping
      Response Body
+     ```
       {
          "message": "Starbucks API version 1.0 alive!"
       }
+     ```
+
    - POST /order/register/{regid}
       Request Body
 
+      ```
       {
          "drink": "LATTE",
          "milk":  "WHOLE_MILK",
          "size":  "VENTI"
       }
+      ```
 
       Response Body
 
+      ```
       {
          "regId": 5012349,
          "drink": "LATTE",
@@ -145,6 +151,229 @@ Here is the final design dicussion and constraints:
          "status": "READY_FOR_PAYMENT",
          "id": 21
       }  
+      ```
+   
+   - GET /order/register/{regid}
+
+      Response Body
+
+      ```
+      [
+         {
+            "regId": 5012349,
+            "drink": "LATTE",
+            "milk": "WHOLE_MILK",
+            "size": "VENTI",
+            "price": 2.28,
+            "status": "READY_FOR_PAYMENT",
+            "id": 21
+         },
+         {
+            "regId": 5012349,
+            "drink": "LATTE",
+            "milk": "WHOLE_MILK",
+            "size": "VENTI",
+            "price": 2.28,
+            "status": "READY_FOR_PAYMENT",
+            "id": 22
+         }
+      ]
+      ```
+
+   - POST /order/register/{regid}/pay/reward/{customerid}
+
+     Response Body: if payment was successfull
+
+      ```
+         {
+            "message": "SUCCESS"
+         }
+      ```
+
+      Response Body: if payment was not successful
+
+      ```
+         {
+            "message": "FAILURE"
+         }
+      ```
+
+   - POST /order/register/{regid}/pay/card/{cardNum}
+
+     Response Body: if payment was successfull
+
+      ```
+         {
+            "message": "SUCCESS"
+         }
+      ```
+
+      Response Body: if payment was not successful
+
+      ```
+         {
+            "message": "FAILURE"
+         }
+      ```
+   
+   - DELETE /orders
+
+
+   Response Body
+   ```
+     {
+         "message": "deleted All orders"
+     }
+   ```
+
+   > Final design of Payment Processing Request/Response
+
+   - GET /ping
+     Response Body
+     ```
+      {
+         "msg": "Payment Processing API alive v1 !"
+      }
+     ```
+
+   - POST /card/{cusId}
+      Request Body
+
+      ```
+      {
+         "cardNumber" : "4111111111111111",
+         "expMonth": "12",
+         "expYear": "2031",
+         "cvv":"11",
+         "cardType": "001",
+         "activated": false
+      }
+
+      ```
+
+      Response Body
+
+      ```
+      {
+         "customer": 1,
+         "cardNumber": "4111111111111111",
+         "activated": false,
+         "expMonth": "12",
+         "expYear": "2031",
+         "cvv": "11",
+         "cardType": "001"
+      }
+      ```
+   
+   - GET /cards/{cusId}
+
+      Response Body
+
+      ```
+      [
+            {
+               "customer": 1,
+               "cardNumber": "4111111111111111",
+               "activated": false,
+               "expMonth": "12",
+               "expYear": "2031",
+               "cvv": "11",
+               "cardType": "001"
+            },
+            {
+               "customer": 1,
+               "cardNumber": "4111111111111112",
+               "activated": false,
+               "expMonth": "12",
+               "expYear": "2031",
+               "cvv": "11",
+               "cardType": "001"
+            }
+      ]
+      ```
+   - DELETE /card/{cardNum}/{customerId}
+
+      ```
+      {
+         "msg": "Card Number : 4111111111111112 Deleted"
+      }
+      ```
+
+   - POST /pay/card/{cardNum}/amount/{amount}
+
+     Response Body: if payment was successfull
+
+      ```
+         {
+            "message": "SUCCESS"
+         }
+      ```
+
+      Response Body: if payment was not successful
+
+      ```
+         {
+            "message": "FAILURE"
+         }
+      ```
+
+   - POST /pay/reward/{cusId}/amount/{amount}
+
+     Response Body: if payment was successfull
+
+      ```
+         {
+            "message": "SUCCESS"
+         }
+      ```
+
+      Response Body: if payment was not successful
+
+      ```
+         {
+            "message": "FAILURE"
+         }
+      ```
+
+   - POST /reward/{cusId}/add/{amount}
+
+     Response Body: 
+
+      ```
+        {
+            "msg": "$35.699999999999996"
+        }
+      ```
+
+   
+   - GET /rewards{cusId}
+
+    Response Body: 
+
+      ```
+        {
+            "msg": "$35.699999999999996"
+        }
+      ```
+
+
+
+
+
+
+   
+
+
+
+
+
+
+     
+
+
+
+
+
 
 
     
