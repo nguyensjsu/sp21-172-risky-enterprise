@@ -345,7 +345,6 @@ Here is the final design dicussion and constraints:
         }
       ```
 
-   
    - GET /rewards{cusId}
 
     Response Body: 
@@ -356,36 +355,35 @@ Here is the final design dicussion and constraints:
         }
       ```
 
-
-
-
-
-
-   
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
-    
-   
-
-
-
 5. Integrations
-   - Which integrations were selected?
+   - CyberSource
+     With CyberSource payment services, we can process payment cards (tokenized or non-tokenized), digital payments such as Apple Pay and Google Pay, and customer ID transactions. we can process payments across the globe and across multiple channels with scalability and security. CyberSource supports an extensive list of payment cards and offers a wide choice of gateways and acquiring banks, all through one connection.
+
+     <img src="images/testCards.png"><br/>
+      _Test Cards_
+
+     We were only using the test account so we were restricted to use only limited number of cards as diplayed above.
+
+
+     Here is the log of the payment request made by our system to cyber source:
+     <img src="images/paymentLogs.png"><br/>
+      _Payment Logs_
+
 6. Cloud Deployments
-   - Design Notes on GitHub an Architecture Diagram of the overall Deployment.
+   - Deployment Archtecure
+
+   <img src="images/Deployment.png"><br/>
+      _Deplpyment_
+
+      
    - How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?
+   
+   Kuberentes is clusters are built for supporting vertical scaliblity. But uur current system design is not fully scalable. So it won't be able to handle > 1 million users. Here are the few challenges in horizantal scalling of the serices:
+
+   1. Front-end servies  Office-front-service and Customer-front-service currently do not support sessionaffinity, therefore pods using spring authentication will not be able to work properly if scaled up. However, this can be easliy resolved by adding sessionAffinity: ClientIP in the serices specs
+
+   2. DataBase scalling - Current database design do not support horizontal scalling, because of ACID properties of realtional database. Master to master data replicas might help with this problem.
+
 7. Technical Requirements
    - Discussion with screenshot evidence of how each technical requirement is meet.
 
