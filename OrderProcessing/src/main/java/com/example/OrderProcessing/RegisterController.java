@@ -151,7 +151,7 @@ public class RegisterController {
 
         PostResponse res = api.sendPost(url);
         System.out.print("Result =>" + res.getResponse());
-        if(res.getCode() == 200 && res.getResponse().substring(8, 15).equals("SUCEESS")){
+        if(res.getCode() == 200 && res.getResponse()!= null && res.getResponse().length() >= 15 && res.getResponse().substring(8, 15).equals("SUCEESS")){
             // set all ready for payment orders are payed
             for(Order order: allOrdersReadyForPayment){
                 order.setStatus(OrderStatus.PAYED);

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: opaymentprocessing
-        image: freakydeveloper007/paymentprocessing:v1
+        image: freakydeveloper007/paymentprocesing:v3
         ports:
         - containerPort: 8080
         env:

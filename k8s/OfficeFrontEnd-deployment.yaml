@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: officefrontend-deployment
+  labels:
+    app: officefrontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: officefrontend
+  template:
+    metadata:
+      labels:
+        app: officefrontend
+    spec:
+      containers:
+      - name: officefrontend
+        image: freakydeveloper007/officefrontend:v1   
+        ports:
+        - containerPort: 8080
+        env:
+          - name: PAYMENT_SERVER_PORT
+            value: "80"
+          - name: PAYMENT_API_HOST
+            value: 34.134.186.195
+          - name: PAYMENT_API_KEY
+            valueFrom:
+              secretKeyRef:
+                  name: secret
+                  key: PAYMENT_API_KEY
+          
+          

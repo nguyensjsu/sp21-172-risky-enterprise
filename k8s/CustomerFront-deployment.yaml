@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: customerfront
-        image: freakydeveloper007/customerfront:v1
+        image: freakydeveloper007/customerfrontend:v1
         ports:
         - containerPort: 8080
         env:

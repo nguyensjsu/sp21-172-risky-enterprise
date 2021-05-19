@@ -1,0 +1,10 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "officefrontend-ingress"
+  namespace: "default"
+spec:
+  backend:
+    serviceName: officefrontend-service
+    servicePort: 80
+

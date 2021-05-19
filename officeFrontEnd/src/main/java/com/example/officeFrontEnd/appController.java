@@ -42,11 +42,9 @@ import lombok.Setter;
 @RequestMapping("/")
 public class appController {
 
-    private String tmpCusName;
-    private String tmpReward;
-
-
-    officeModel office = new officeModel();
+    @Value("${paymentprocessing.serverport}")private String serverPort;
+    @Value("${paymentprocessing.apihost}") private String apiHost;
+    @Value("${paymentprocessing.apikey}") private String apiKey;
 
 
         @GetMapping ("/officePage")
@@ -62,13 +60,23 @@ public class appController {
         }
         
         @PostMapping ("/officePage") 
-        public String officeAction(@Valid @ModelAttribute("command") Command command) {
+        public String officeAction(@Valid @ModelAttribute("command") Command command, Model model) {
             
-            log.info("check customerId");    
+            String url = "http://" + apiHost + ":" + serverPort + "/reward/" + command.getCustomerId() + "/add/" + command.getReward();
 
-            String customerId = command.getCustomerId();
-            log.info(customerId);
+            PaymentProcessingAPI api = new PaymentProcessingAPI();
+            api.setHost(apiHost);
+            api.setKey(apiKey);
 
+            PostResponse res = api.sendPost(url);
+
+            if(res.getCode() == 200){
+                model.addAttribute("message", "Reward Added Successfully !");
+            }
+            else{
+                model.addAttribute("message", "Reward cannot be added");
+            }
+            log.info(res.getResponse());
             return "officePage";
             
         }

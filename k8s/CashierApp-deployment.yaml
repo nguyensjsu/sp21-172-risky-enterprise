@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cashierapp
-        image: freakydeveloper007/cashierapp:v1       
+        image: freakydeveloper007/cashierapp:v2     
         ports:
         - containerPort: 8080
         env:

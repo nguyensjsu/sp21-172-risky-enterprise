@@ -160,7 +160,7 @@ public class HomeController {
         card.setCardNumber(form.getCardnum().replace("-", ""));
         card.setCardType(cardTypeToDigits.get(form.getCardnum().substring(0,1)));
         card.setCvv(form.getCardcvv());
-        card.setExpMonth(form.getCardexpmon());
+        card.setExpMonth(monthToNum.get(form.getCardexpmon().toLowerCase()));
         card.setExpYear(form.getCardexpyear());
 
         cardRepository.save(card);

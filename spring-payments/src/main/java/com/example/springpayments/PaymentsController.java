@@ -203,7 +203,7 @@ public class PaymentsController {
             }
 
 		}
-        return null;
+        return new Message("FAILURE");
     }
 
 }
