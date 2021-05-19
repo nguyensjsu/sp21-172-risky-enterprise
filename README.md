@@ -80,9 +80,9 @@ intially also helped me understand the overall workflow and break down the neces
 
 Ying Chang Cui: Cashier Application
 
-Chahatpreet Grewal:
+Chahatpreet Grewal: Order Processing Microservice
 
-Xuefeng Xu: 
+Xuefeng Xu: Customer front end
 
 
 #
