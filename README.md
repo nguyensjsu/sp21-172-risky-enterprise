@@ -15,12 +15,80 @@ _By Resky Enterprise: Ying Chang Cui, Chahatpreet Grewal, Xuefeng Xu_
 
 ## Project Design 
 
-Starbucks Online Order is an online order application that used by Startbuck to process customers' order, payment process, and reward management. Also, the application allows customers to review their order and reward record, and manage payment method. Our solution includes Cashier's App, Customer App, and Office App as frontends. Order Process service and Payment Process serivce as backend services connecting with different databases. Here is the design for the project.
+Starbucks Online Order is an online order application that used by Startbuck to process customers' order, payment process, and reward management. Also, the application allows customers to review their order and reward record, and manage payment method. Our solution includes Cashier's App, Customer App, and Office App as frontends. Order Process service and Payment Process serivce as backend services connecting with different databases. 
+
+We went through three phases of redesign before getting to out final project design that we sent into prodcution.
+
+1. First Design
+
+<img src="images/MicroServiceArchitecture.png"><br/>
+_First Project Architecture Design_
+
+We came up with this design after 2 hours of group meeting, where we discussed the minimal desgin for meeting the core technical requirements. We thorougly diccussed the tradeoffs, distributed the work, and considered the design desceribed in the above picture as good starting point.
+
+Here are the key points and reasoning about out design:
+* Since Orders will be placed much more frequently than others serivces like accessing rewards, inserting cards, and changanging payments details. We decided to create two sepreate micro servies. Order processing for handling orders at mutliple registers. Payment processing for handling cards, rewards, and user details. Furthemore, since intergation with cybersource api for payment using cards would have resulted in a huge code base, this design also promoted better code base maintainablity.
+
+* Second, we agreed that we need indepenedent databases for storing Orders, Cards, and Rewards. As order database design needs to be sharded to handle high volume traffic.
+
+<img src = "images/shards-database-sharding-cust-a-d-cust-k-n-cus.png"><br/>
+_Order_processing_DataBase_design_
+
+Whereas databases for rewards and card needs to read intesive.
+
+<img src = "images/load-balancer-read-write-application-auto-scali.png"><br/>
+_Rewards and Cards Database Design_
+
+* Third, we decided on the RestAPIs to be implemeneted in order processing and payment processing:
+
+Order Processing
+   - POST  /order/register/{regid}
+   - GET     /order/register/{regid}
+   - DELETE  /order/register/{regid}
+   - POST    /order/register/{regid}/pay/{cardnum}
+
+Payment Processing
+
+   - GET /cards
+   - POST /cards
+   - GET /cards/{num}
+   - POST /card/activate/{num}/{code}
+   - DELETE /cards
+   - GET /Rewards {CustomerID}
+   - POST /Rewards{cusID}
+
+2. Second Design
 
 <img src="images/MicroServiceArchitecture-2.png"><br/>
-_Project Architecture Design_
+_Second Project Architecture Design_
 
-From the Figure, Cashier gets order with customized options directly from customer, then forward the order to Order Porcessing service. The OP service will push the order to Payment processing sevice. Customer, on the other hand, can login to the customer front end to check the order that just been placed. Also, customer could review his/her payment method, add credit card, or decide to redeem reward through the Customer fronend App. Lastly, cashier can login to office app to change the customer's reward.
+After a week into a development certain flaws in our initial desing showed up. Here are the initial problems and our soltuions in new design:
+* As cybersoruce API requires full cutomer and card to authorize a payment, out initial database design only store card details, thus, customer had to manually enter their full detail before paying for every order. We resolved this by creating a database design where custumer table will have one to many relationship with cards database. Furthermore, this design promoted better data noramalization and space usage as well as it could be scaled with read replicas with lazy update to meet the high read intensive loads.
+
+* Since payment processing microservice is exposing sensitive detials through its RestAPI's we secured its API's with kong gateway, so that only authorized users with valid apikey can make a call.
+
+* In Order to use spring security's inbuilt user authernciation support, spring authentication needs to be the part of front-end spring application that rendered the view.
+
+* We also added api's in Payment Processing microservice for supporting payment using rewards:
+   - GET /rewards{CustomerId}
+   - POST /rewards{CustomerId}
+
+3. Final Design
+
+<img src="images/MicroServiceArchitecture-3.png"><br/>
+_Final Project Architecture Design_
+
+With fourth team member dropping the class, and third one struggling to keep up. We had to cut the corners that did jeopridize the overall security, scalability, and robustness of our infrastrcture to meet our technical requirements in timely manner. From the Figure, Cashier gets order with customized options directly from customer, then forward the order to Order Porcessing service. The OP service will push the order to Payment processing sevice. Customer, on the other hand, can login to the customer front end to check the order that just been placed. Also, customer could review his/her payment method, add credit card, or decide to redeem reward through the Customer fronend App. Lastly, cashier can login to office app to change the customer's reward.
+
+
+Here is the final design dicussion and constraints:
+1. Instead of using of database design as dicussed in Second design , we create a single MYSQL container based database that would store orders, customers, and cards. This database is a single point of failure in our infrastrcuture, and do not support scalablity and verstatility as in described in our second design.
+
+2. With three serices using same database, the security of the whole system is comprmised. As hacker can get access to the shared database throught any of the serice.
+
+3. Final API design is dicussed in
+ > - [Features and Implementation](#features-and-implementation)
+
 
 #
 ## Features and Implementation
@@ -51,7 +119,37 @@ From the Figure, Cashier gets order with customized options directly from custom
    - Customer can review his/her current reward record and decide whether or not to use it.
 
 4. REST API 
-   > Final design with sample request/response
+   > Final design of Order Processing Request/Response
+   - GET /ping
+     Response Body
+      {
+         "message": "Starbucks API version 1.0 alive!"
+      }
+   - POST /order/register/{regid}
+      Request Body
+
+      {
+         "drink": "LATTE",
+         "milk":  "WHOLE_MILK",
+         "size":  "VENTI"
+      }
+
+      Response Body
+
+      {
+         "regId": 5012349,
+         "drink": "LATTE",
+         "milk": "WHOLE_MILK",
+         "size": "VENTI",
+         "price": 2.28,
+         "status": "READY_FOR_PAYMENT",
+         "id": 21
+      }  
+
+
+    
+   
+
 
 
 5. Integrations
