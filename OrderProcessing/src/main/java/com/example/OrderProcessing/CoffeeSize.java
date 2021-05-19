@@ -3,7 +3,7 @@ package com.example.OrderProcessing;
 
 enum CoffeeSize {
 
-  SMALL,
+  TALL,
   MEDIUM, 
-  GRANDE
+  VENTI
 }

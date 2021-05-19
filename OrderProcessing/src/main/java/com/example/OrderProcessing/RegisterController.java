@@ -63,9 +63,9 @@ public class RegisterController {
 
     RegisterController(OrderRepository orderRepository){
         this.orderRepository = orderRepository;
-        sizeToPrice.put(CoffeeSize.GRANDE, 1.5);
+        sizeToPrice.put(CoffeeSize.TALL, 1.5);
         sizeToPrice.put(CoffeeSize.MEDIUM, 1.2);
-        sizeToPrice.put(CoffeeSize.SMALL, 0.8);
+        sizeToPrice.put(CoffeeSize.VENTI, 0.8);
     }
     
     @GetMapping("/ping")

@@ -88,7 +88,7 @@ public class CashierAppController {
 
                 message = msgresponse.reply;
                 if (message.equals("[]"))
-                    message = "No Orders Placed";
+                    message = "No Orders";
             }
             else{
                 OrderResponse response = new OrderResponse();
@@ -101,10 +101,11 @@ public class CashierAppController {
 
                 message = msgresponse.reply;
                 if (message.equals("[]"))
-                    message = "No Orders Placed";
+                    message = "No Orders";
             }
         }
 
+        
         model.addAttribute("message", message);
         return "order";
     }
