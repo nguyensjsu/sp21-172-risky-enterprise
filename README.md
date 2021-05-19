@@ -28,9 +28,10 @@ From the Figure, Cashier gets order with customized options directly from custom
 1. Cashier's App
    > What features were implemented?
    - Our Cashier Application uses our orderProcessing API and the cashier can place different types of drinks (coffee, hot drinks, tea, and frappuccino).
-   - The drinks would be saved in a database through our API call. 
-   - The cashier can also clear orders (clear order button in home page) and it would delete all the orders from the database. 
-   - Another feature the Cashier Application has is paying for the order either by credit card or rewards. 
+   - Drinks can be customized by different sizes (small,medium,large) and different milk options (whole milk, nonfat milk, almond milk, and soy milk)
+   - Drinks would be saved in a database through our API call (submit button). 
+   - The cashier can clear orders (clear order button in home page) and it would delete all the orders from the database. 
+   - The customer can for their order either by credit card or rewards. 
    - The console would receive feedback if the transaction is successful. 
    - If the transaction is successful, the database would be cleared. 
    - The cashier can also see what drinks are currently in the database to clarify what information was submitted through the API call.
@@ -70,15 +71,18 @@ From the Figure, Cashier gets order with customized options directly from custom
 &nbsp;
 
 ## Challange and Solutions
-
+Ying Chang Cui- One challenge that I had encountered was correctly implementing the API from the Cashier Application. Initially I was not getting any feedback from
+our API so it was hard to debug this issue. I was able to solve this by referencing Lab 7 when we did the payment API calls to learn how to set parameters to be passed in
+and how to turn json to string and vise versa. My teammates were also very communicative so I know what parameters to be sending and receiving. The architecture we created
+intially also helped me understand the overall workflow and break down the necessary steps to implement Cashier Application.
 
 ## Roles and Contributions
 
-Ying Chang Cui: 
+Ying Chang Cui: Cashier Application
 
-Chahatpreet Grewal:
+Chahatpreet Grewal: Order Processing Microservice
 
-Xuefeng Xu: 
+Xuefeng Xu: Customer front end
 
 
 #
