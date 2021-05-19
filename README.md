@@ -1,25 +1,58 @@
 #  Risky Enterprise Team Project Journal
+_By Resky Enterprise: Ying Chang Cui, Chahatpreet Grewal, Xuefeng Xu_
+
 
 --- 
-&nbsp;
+&nbsp; 
 
-## Team Journal
+> Content:
+> - [Project Design](#project-design)
+> - [Features and Implementation](#features-and-implementation)
+> - [Challenges and Solutions](#challenges-and-solutions)
+> - [Roles and Contribution](#roles-and-contribution)
+
+---
+
+## Project Design 
+
+Starbucks Online Order is an online order application that used by Startbuck to process customers' order, payment process, and reward management. Also, the application allows customers to review their order and reward record, and manage payment method. Our solution includes Cashier's App, Customer App, and Office App as frontends. Order Process service and Payment Process serivce as backend services connecting with different databases. Here is the design for the project.
+
+<img src="images/MicroServiceArchitecture-2.png"><br/>
+_Project Architecture Design_
+
+From the Figure, Cashier gets order with customized options directly from customer, then forward the order to Order Porcessing service. The OP service will push the order to Payment processing sevice. Customer, on the other hand, can login to the customer front end to check the order that just been placed. Also, customer could review his/her payment method, add credit card, or decide to redeem reward through the Customer fronend App. Lastly, cashier can login to office app to change the customer's reward.
+
+#
+## Features and Implementation
 
 1. Cashier's App
-   - What features were implemented?
-      - Our Cashier Application uses our orderProcessing API and the cashier can place different types of drinks (coffee, hot drinks, tea, and frappuccino).
-      - The drinks would be saved in a database through our API call. 
-      - The cashier can also clear orders (clear order button in home page) and it would delete all the orders from the database. 
-      - Another feature the Cashier Application has is paying for the order either by credit card or rewards. 
-      - The console would receive feedback if the transaction is successful. 
-      - If the transaction is successful, the database would be cleared. 
-      - The cashier can also see what drinks are currently in the database to clarify what information was submitted through the API call.
+   > What features were implemented?
+   - Our Cashier Application uses our orderProcessing API and the cashier can place different types of drinks (coffee, hot drinks, tea, and frappuccino).
+   - The drinks would be saved in a database through our API call. 
+   - The cashier can also clear orders (clear order button in home page) and it would delete all the orders from the database. 
+   - Another feature the Cashier Application has is paying for the order either by credit card or rewards. 
+   - The console would receive feedback if the transaction is successful. 
+   - If the transaction is successful, the database would be cleared. 
+   - The cashier can also see what drinks are currently in the database to clarify what information was submitted through the API call.
 2. Backoffice Help Desk App
-   - What features were implemented?
+   > What features were implemented?
+   - The office app provides login feature for cahiers who want to use the app. 
+   - After login, cashier would search for a paticular customer by customer ID.
+   - If the customer exist, the app would display the current reward of this customer.
+   - Cashier could change the reward by input a new value. The updated value would be displayed as the current reward.
+  
 3. Online Store
-   - What features were implemented?
+   > What features were implemented?
+   - Customer can use the app as a return customer or new customer. 
+   - customer can review his/her order from the order page.
+   - Customer can review his/her payment methods.
+   - Customer can add a new credit card for payment process.
+   - Customer can review his/her current reward record and decide whether or not to use it.
+
 4. REST API 
-   - Final design with sample request/response
+   > Final design with sample request/response
+
+
 5. Integrations
    - Which integrations were selected?
 6. Cloud Deployments
@@ -27,8 +60,7 @@
    - How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?
 7. Technical Requirements
    - Discussion with screenshot evidence of how each technical requirement is meet.
-8. Diagrams:
-   Link for lucid Charts: https://lucid.app/lucidchart/invitations/accept/inv_4e8b2e76-cfb8-44df-b20a-448c435032e7?viewport_loc=76%2C145%2C1899%2C1068%2C0_0
+
 
    * MicroService Architecture
    <details><summary>Archtecure Design 1</summary><img src="images/MicroServiceArchitecture.png"></details>
@@ -36,6 +68,54 @@
 
 --- 
 &nbsp;
+
+## Challange and Solutions
+
+
+## Roles and Contributions
+
+Ying Chang Cui: 
+
+Chahatpreet Grewal:
+
+Xuefeng Xu: 
+
+
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Meeting Journal
 
 Mar-19: work distribution, group forming agreement
