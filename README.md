@@ -447,6 +447,18 @@ Here is the final design dicussion and constraints:
 
       <img src="images/T14.png"><br/>
             _Trying to ping payment api through kong api gateway_
+
+   - Google Cloud Deployment
+      <img src="images/T15.png"><br/>
+            _Ingress_
+
+      <img src="images/T16.png"><br/>
+            _Service_
+
+      <img src="images/T17.png"><br/>
+            _Deployment_ 
+
+
    
 --- 
 &nbsp;
@@ -457,16 +469,27 @@ our API so it was hard to debug this issue. I was able to solve this by referenc
 and how to turn json to string and vise versa. My teammates were also very communicative so I know what parameters to be sending and receiving. The architecture we created
 intially also helped me understand the overall workflow and break down the necessary steps to implement Cashier Application.
 
+Chahatpreet - 
+1. biggest challenge I had was integration of different services on google cloud. For one specific instance, when I created production ready image for the order processing microservice and push it to the cloud. My microservice failed to connect to MYSQL server, it took me 13 hours to figure that there was additonal space in my application.properies file that got appeneded to mysql user name that i passed in at runtime to the spring.
+
+2. Second challenge was how not to deactivate certain features that you need in development environemnt but not in production environment. For example load database service. I got around by using @profile annotation from the spring framework.
+
+3. Setting Up Custom spring authentication for using the existing database.
+
+
 ## Roles and Contributions
 
 Ying Chang Cui: Cashier Application
 
 Chahatpreet Grewal: Order Processing Microservice
+                  : Payment Processing Microservice
+                  : KongAPI gateway
+                  : Spring Authentication
+                  : Mysql DataBase
+                  : Google Cloud Deployment
 
 Xuefeng Xu: Customer front end
 
-
-#
 
 
 
