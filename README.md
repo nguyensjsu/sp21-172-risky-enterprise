@@ -386,12 +386,68 @@ Here is the final design dicussion and constraints:
 
 7. Technical Requirements
    - Discussion with screenshot evidence of how each technical requirement is meet.
+   
+   - Cashier's App
+
+      Spring Cashier App spring MVC (Controller). We have used spring auhentication in customer front-end and office backend rather than doing cashier App. 
+      <img src="images/T1.png"><br/>
+         _Cashier App MVC_
+
+      <img src="images/T2.png"><br/>
+         _Cashier App google cloud logs dispalying calls to order processing api_
+
+      <img src="images/T3.png"><br/>
+         _Cashier App google cloud Deployment_
+   
+   - Customer Front-end App
+
+     Screenshot displaying the user of spring mvc and spring authentication in Customer Front-end
+
+     <img src="images/T4.png"><br/>
+         _Home controller_
+
+      <img src="images/T5.png"><br/>
+         _Spring config file showing the configruation used in spring Authentication_
+
+      <img src="images/T6.png"><br/>
+         _Google cloud deployment of the customer front-end sprign usinf spring mvc_
+   
+   - Office Front-end App
+   
+      Spring front-end created spring mvc and spring auhtentication
+
+      <img src="images/T7.png"><br/>
+         _app controller_
+
+      <img src="images/T8.png"><br/>
+         _Spring config file showing the configruation used in spring Authentication_
+
+      <img src="images/T9.png"><br/>
+         _Google cloud deployment of the customer office-end sprign usinf spring mvc_
+
+   - Development Tools
+
+      <img src="images/T10.png"><br/>
+         _Java version 11 and Gradel version 5.6_
+
+   - Mysql DataBase
+   
+      <img src="images/T11.png"><br/>
+            _Mysql database with stored customer in customer table and other tables_
 
 
-   * MicroService Architecture
-   <details><summary>Archtecure Design 1</summary><img src="images/MicroServiceArchitecture.png"></details>
-   <details><summary>Archtecure Design 2</summary><img src="images/MicroServiceArchitecture-2.png"></details>
+      <img src="images/T12.png"><br/>
+            _Mysql cloud deplopyment_
 
+   - Kong API Gateway
+
+      <img src="images/T13.png"><br/>
+            _Kong API gateway deployment_
+
+
+      <img src="images/T14.png"><br/>
+            _Trying to ping payment api through kong api gateway_
+   
 --- 
 &nbsp;
 
